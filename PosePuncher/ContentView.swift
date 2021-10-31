@@ -8,7 +8,7 @@ struct ContentView: View {
     
     var body: some View {
         PlayerContainerView(captureSession: viewModel.captureSession)
-            .clipShape(Circle())
+            //.clipShape(Circle())
     }
     
 }
