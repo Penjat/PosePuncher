@@ -1,13 +1,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var viewModel = ContentViewModel()
+    @StateObject var videoViewModel = ContentViewModel()
+    @StateObject var poseViewModel = PoseViewModel()
     init() {
-        viewModel.checkAuthorization()
+        videoViewModel.checkAuthorization()
     }
     
     var body: some View {
-        PlayerContainerView(captureSession: viewModel.captureSession)
+        PlayerContainerView(captureSession: videoViewModel.captureSession)
             //.clipShape(Circle())
     }
     
