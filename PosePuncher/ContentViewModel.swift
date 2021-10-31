@@ -63,7 +63,6 @@ class ContentViewModel: ObservableObject {
 
     func prepareCamera() {
         captureSession.sessionPreset = .high
-
         if let device = AVCaptureDevice.default(for: .video) {
             startSessionForDevice(device)
         }

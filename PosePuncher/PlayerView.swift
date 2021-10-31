@@ -9,7 +9,6 @@ class PlayerView: NSView {
     init(captureSession: AVCaptureSession) {
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         super.init(frame: .zero)
-
         setupLayer()
     }
 
@@ -18,7 +17,7 @@ class PlayerView: NSView {
         previewLayer?.frame = self.frame
         previewLayer?.contentsGravity = .resizeAspectFill
         previewLayer?.videoGravity = .resizeAspectFill
-        previewLayer?.connection?.automaticallyAdjustsVideoMirroring = true
+        previewLayer?.connection?.automaticallyAdjustsVideoMirroring = false
         previewLayer?.connection?.isVideoMirrored = true
         layer = previewLayer
     }
