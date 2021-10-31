@@ -4,6 +4,7 @@ import VideoToolbox
 import AppKit
 
 class PoseViewModel: NSObject, ObservableObject {
+    @Published var pose = Pose()
     private var poseNet: PoseNet!
     private var currentFrame: CGImage?
     private var poseBuilderConfiguration = PoseBuilderConfiguration()
@@ -29,7 +30,6 @@ extension PoseViewModel: PoseNetDelegate {
         defer {
             // Release `currentFrame` when exiting this method.
             self.currentFrame = nil
-            print("releasing")
         }
         
         guard let currentFrame = currentFrame else {
@@ -40,12 +40,7 @@ extension PoseViewModel: PoseNetDelegate {
                                       configuration: poseBuilderConfiguration,
                                       inputImage: currentFrame)
         
-        let poses = algorithm == .single
-        ? [poseBuilder.pose]
-        : poseBuilder.poses
-        
-        //        previewImageView.show(poses: poses, on: currentFrame)
-        print(poses)
+        pose = poseBuilder.pose
     }
 }
 
