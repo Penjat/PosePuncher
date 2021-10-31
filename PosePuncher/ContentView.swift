@@ -7,6 +7,7 @@ struct ContentView: View {
     var body: some View {
         PlayerContainerView(captureSession: videoViewModel.captureSession).onAppear {
             videoViewModel.checkAuthorization()
+            videoViewModel.setupOutput(delgate: poseViewModel)
         }
     }
 }

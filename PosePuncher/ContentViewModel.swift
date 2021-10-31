@@ -87,7 +87,8 @@ class ContentViewModel: ObservableObject {
         captureSession.addInput(input)
     }
     
-    func setupOutput(videoOutput: AVCaptureVideoDataOutput, delgate: AVCaptureVideoDataOutputSampleBufferDelegate){
+    func setupOutput(delgate: AVCaptureVideoDataOutputSampleBufferDelegate){
+            let videoOutput = AVCaptureVideoDataOutput()
             let videoQueue = DispatchQueue(label: "videoQueue", qos: .userInteractive)
             videoOutput.setSampleBufferDelegate(delgate, queue: videoQueue)
             
