@@ -86,4 +86,15 @@ class ContentViewModel: ObservableObject {
         }
         captureSession.addInput(input)
     }
+    
+    func setupOutput(videoOutput: AVCaptureVideoDataOutput, delgate: AVCaptureVideoDataOutputSampleBufferDelegate){
+            let videoQueue = DispatchQueue(label: "videoQueue", qos: .userInteractive)
+            videoOutput.setSampleBufferDelegate(delgate, queue: videoQueue)
+            
+            if captureSession.canAddOutput(videoOutput) {
+                captureSession.addOutput(videoOutput)
+            } else {
+                fatalError("could not add video output")
+            }
+        }
 }

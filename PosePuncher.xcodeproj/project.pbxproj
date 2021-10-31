@@ -11,7 +11,6 @@
 		0B875CA7272DB987002C6887 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CA6272DB987002C6887 /* ContentView.swift */; };
 		0B875CA9272DB988002C6887 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B875CA8272DB988002C6887 /* Assets.xcassets */; };
 		0B875CAC272DB988002C6887 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B875CAB272DB988002C6887 /* Preview Assets.xcassets */; };
-		0B875CB6272E3B74002C6887 /* VideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CB5272E3B74002C6887 /* VideoPreviewView.swift */; };
 		0B875CB8272E417B002C6887 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CB7272E417B002C6887 /* PlayerView.swift */; };
 		0B875CBA272E432D002C6887 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CB9272E432D002C6887 /* ContentViewModel.swift */; };
 		0B875CC5272E4EA1002C6887 /* PoseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CC4272E4EA1002C6887 /* PoseViewModel.swift */; };
@@ -36,7 +35,6 @@
 		0B875CA8272DB988002C6887 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B875CAB272DB988002C6887 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0B875CAD272DB988002C6887 /* PosePuncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PosePuncher.entitlements; sourceTree = "<group>"; };
-		0B875CB5272E3B74002C6887 /* VideoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPreviewView.swift; sourceTree = "<group>"; };
 		0B875CB7272E417B002C6887 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		0B875CB9272E432D002C6887 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		0B875CBD272E4683002C6887 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 				0B875CDF272E51AD002C6887 /* Pose */,
 				0B875CA6272DB987002C6887 /* ContentView.swift */,
 				0B875CC4272E4EA1002C6887 /* PoseViewModel.swift */,
-				0B875CB5272E3B74002C6887 /* VideoPreviewView.swift */,
 				0B875CB7272E417B002C6887 /* PlayerView.swift */,
 				0B875CB9272E432D002C6887 /* ContentViewModel.swift */,
 				0B875CA8272DB988002C6887 /* Assets.xcassets */,
@@ -218,7 +215,6 @@
 				0B875CC5272E4EA1002C6887 /* PoseViewModel.swift in Sources */,
 				0B875CCB272E501E002C6887 /* PoseNetInput.swift in Sources */,
 				0B875CD3272E5024002C6887 /* Pose.swift in Sources */,
-				0B875CB6272E3B74002C6887 /* VideoPreviewView.swift in Sources */,
 				0B875CCC272E501E002C6887 /* PoseNetOutput.swift in Sources */,
 				0B875CD6272E5024002C6887 /* PoseBuilderConfiguration.swift in Sources */,
 				0B875CBA272E432D002C6887 /* ContentViewModel.swift in Sources */,

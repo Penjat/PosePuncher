@@ -3,15 +3,12 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var videoViewModel = ContentViewModel()
     @StateObject var poseViewModel = PoseViewModel()
-    init() {
-        videoViewModel.checkAuthorization()
-    }
-    
+ 
     var body: some View {
-        PlayerContainerView(captureSession: videoViewModel.captureSession)
-            //.clipShape(Circle())
+        PlayerContainerView(captureSession: videoViewModel.captureSession).onAppear {
+            videoViewModel.checkAuthorization()
+        }
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

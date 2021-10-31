@@ -1,5 +1,7 @@
+import AVFoundation
 import Foundation
 import VideoToolbox
+import AppKit
 
 class PoseViewModel: ObservableObject {
     private var poseNet: PoseNet!
@@ -43,3 +45,17 @@ extension PoseViewModel: PoseNetDelegate {
 //        previewImageView.show(poses: poses, on: currentFrame)
     }
 }
+
+//extension PoseViewModel: VideoCaptureDelegate {
+//    func videoCapture(_ videoCapture: VideoCapture, didCaptureFrame capturedImage: CGImage?) {
+//        guard currentFrame == nil else {
+//            return
+//        }
+//        guard let image = capturedImage else {
+//            fatalError("Captured image is null")
+//        }
+//
+//        currentFrame = image
+//        poseNet.predict(image)
+//    }
+//}
