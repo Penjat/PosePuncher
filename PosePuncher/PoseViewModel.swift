@@ -9,7 +9,7 @@ class PoseViewModel: NSObject, ObservableObject {
     private var currentFrame: CGImage?
     private var poseBuilderConfiguration = PoseBuilderConfiguration()
     /// The algorithm the controller uses to extract poses from the current frame.
-    private var algorithm: Algorithm = .multiple
+    private var algorithm: Algorithm = .single
     
     override init() {
         super.init()
@@ -56,10 +56,9 @@ extension PoseViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
             return
         }
         
-        
+       
         //get a CIImage out of the CVImageBuffer
         let ciImage = CIImage(cvImageBuffer: cvBuffer)
-        
         let context = CIContext(options: nil)
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
             currentFrame = cgImage
