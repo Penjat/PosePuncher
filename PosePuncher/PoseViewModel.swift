@@ -2,9 +2,11 @@ import AVFoundation
 import Foundation
 import VideoToolbox
 import AppKit
+import Combine
 
 class PoseViewModel: NSObject, ObservableObject {
-    @Published var pose = Pose()
+    var pose = PassthroughSubject<Pose, Never>()
+//    var pose = Pose()
     private var poseNet: PoseNet!
     private var currentFrame: CGImage?
     private var poseBuilderConfiguration = PoseBuilderConfiguration()
@@ -40,7 +42,7 @@ extension PoseViewModel: PoseNetDelegate {
                                       configuration: poseBuilderConfiguration,
                                       inputImage: currentFrame)
         
-        pose = poseBuilder.pose
+        pose.send(poseBuilder.pose)
     }
 }
 

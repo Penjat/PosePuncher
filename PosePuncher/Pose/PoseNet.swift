@@ -53,8 +53,10 @@ class PoseNet {
             // Wrap the image in an instance of PoseNetInput to have it resized
             // before being passed to the PoseNet model.
             let input = PoseNetInput(image: image, size: self.modelInputSize)
+            let options = MLPredictionOptions()
+            options.usesCPUOnly = true
 
-            guard let prediction = try? self.poseNetMLModel.prediction(from: input) else {
+            guard let prediction = try? self.poseNetMLModel.prediction(from: input, options: options) else {
                 return
             }
 
