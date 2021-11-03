@@ -7,6 +7,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     @ObservedObject var videoViewModel = ContentViewModel()
     @ObservedObject var poseViewModel = PoseViewModel()
     
+    var score = 0
+    let scoreLabel = SKLabelNode(text: "0")
+    
     let player = PlayerController()
     var rightHand: SKEmitterNode?
     var leftHand: SKShapeNode?
@@ -22,14 +25,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         videoViewModel.setupOutput(delgate: poseViewModel)
         scene?.addChild(player.playerBody)
         
+        scoreLabel.fontSize = 65
+        scoreLabel.fontColor = SKColor.green
+        scoreLabel.position = CGPoint(x: 80, y: 80)
+        scoreLabel.zRotation = 3.14159
+        addChild(scoreLabel)
+        
         player.setUpSink(posePublisher: poseViewModel.pose.eraseToAnyPublisher())
         let update = SKAction.run(
         {
-            let shape = SKShapeNode(circleOfRadius: 30 )
+            let shape = SKShapeNode(circleOfRadius: 25 )
             shape.position = CGPoint(x: CGFloat.random(in: 30..<(self.scene?.frame.maxX ?? 300)-30), y:-50)
-            shape.fillColor = .blue
-    //        shape.lineWidth = 10
-            shape.physicsBody = SKPhysicsBody(circleOfRadius: 30)
+            shape.fillColor = .orange
+            shape.physicsBody = SKPhysicsBody(circleOfRadius: 25)
             shape.physicsBody?.isDynamic = false
             shape.physicsBody?.affectedByGravity = false
             shape.name = "ball"
@@ -49,12 +57,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         guard let nodeB = contact.bodyB.node else { return }
         
         if nodeA.name == "ball" && nodeB.name == "fist"{
+            let explosion = SKEmitterNode(fileNamed: "Explosion")
+            explosion?.position = nodeA.position
+            scene?.addChild(explosion!)
             nodeA.removeFromParent()
+            self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
+            score += 1
+            scoreLabel.text = "\(score)"
             
-            print("ball")
         } else if nodeB.name == "ball" && nodeA.name == "fist" {
+            let explosion = SKEmitterNode(fileNamed: "Explosion")
+            explosion?.position = nodeB.position
+            scene?.addChild(explosion!)
             nodeB.removeFromParent()
-            print("ball")
+            self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
+            score += 1
+            scoreLabel.text = "\(score)"
         }
     }
 }
