@@ -51,7 +51,7 @@ class PlayerController {
         leftWrist?.physicsBody = SKPhysicsBody(circleOfRadius: 20)
         leftWrist?.physicsBody?.isDynamic = true
         leftWrist?.physicsBody?.affectedByGravity = false
-        leftWrist?.name = "leftWrist"
+        leftWrist?.name = "fist"
         leftWrist?.physicsBody!.contactTestBitMask = 1
         
         playerBody.addChild(leftWrist!)
@@ -62,7 +62,7 @@ class PlayerController {
         rightWrist?.physicsBody = SKPhysicsBody(circleOfRadius: 20)
         rightWrist?.physicsBody?.isDynamic = true
         rightWrist?.physicsBody?.affectedByGravity = false
-        rightWrist?.name = "rightWrist"
+        rightWrist?.name = "fist"
         rightWrist?.physicsBody!.contactTestBitMask = 1
         
         playerBody.addChild(rightWrist!)

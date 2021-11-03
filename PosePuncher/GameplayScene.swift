@@ -48,15 +48,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
         
-        if nodeA.name == "ball2" || nodeB.name == "ball2" {
-            player.rightWrist?.fillColor = .green
-            player.leftWrist?.fillColor = .green
+        if nodeA.name == "ball" && nodeB.name == "fist"{
+            nodeA.removeFromParent()
             
-            print("ball 2")
-        } else if nodeA.name == "ball" || nodeB.name == "ball" {
-            player.rightWrist?.fillColor = .blue
-            player.leftWrist?.fillColor = .blue
-            print("ball 1")
+            print("ball")
+        } else if nodeB.name == "ball" && nodeA.name == "fist" {
+            nodeB.removeFromParent()
+            print("ball")
         }
     }
 }
