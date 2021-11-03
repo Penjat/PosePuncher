@@ -16,7 +16,6 @@ struct ContentView: View {
                 .rotationEffect(Angle(degrees: 180))
                 .frame(width: 1280, height: 720)
                 .ignoresSafeArea()
-            
         }
     }
 }
