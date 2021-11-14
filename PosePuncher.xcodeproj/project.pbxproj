@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B295796274199E9009AEF47 /* RocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B295795274199E9009AEF47 /* RocketController.swift */; };
 		0B2BDD182732127900E61B71 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BDD172732127900E61B71 /* Explosion.sks */; };
 		0B875CA5272DB987002C6887 /* PosePuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CA4272DB987002C6887 /* PosePuncherApp.swift */; };
 		0B875CA7272DB987002C6887 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CA6272DB987002C6887 /* ContentView.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B295795274199E9009AEF47 /* RocketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketController.swift; sourceTree = "<group>"; };
 		0B2BDD172732127900E61B71 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		0B875CA1272DB987002C6887 /* PosePuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosePuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B875CA4272DB987002C6887 /* PosePuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosePuncherApp.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				0B9EE18A2730CFA700F14DAE /* CharacterView.swift */,
 				0B9EE18C2730DC8600F14DAE /* GameplayScene.swift */,
 				0B9EE1902731D49100F14DAE /* PlayerController.swift */,
+				0B295795274199E9009AEF47 /* RocketController.swift */,
 				0B875CA8272DB988002C6887 /* Assets.xcassets */,
 				0B875CAD272DB988002C6887 /* PosePuncher.entitlements */,
 				0B875CAA272DB988002C6887 /* Preview Content */,
@@ -241,6 +244,7 @@
 				0B875CD7272E5024002C6887 /* PoseBuilder+Single.swift in Sources */,
 				0B875CD8272E5024002C6887 /* Joint.swift in Sources */,
 				0B875CD4272E5024002C6887 /* PoseBuilder.swift in Sources */,
+				0B295796274199E9009AEF47 /* RocketController.swift in Sources */,
 				0B875CDC272E5028002C6887 /* CGImage+Extension.swift in Sources */,
 				0B875CDE272E5153002C6887 /* PoseNetMobileNet075S16FP16.mlmodel in Sources */,
 				0B875CD5272E5024002C6887 /* PoseBuilder+Multiple.swift in Sources */,

@@ -10,7 +10,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score = 0
     let scoreLabel = SKLabelNode(text: "0")
     
-    let player = PlayerController()
+    let player = RocketController()
     var rightHand: SKEmitterNode?
     var leftHand: SKShapeNode?
     
@@ -38,7 +38,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             shape.position = CGPoint(x: CGFloat.random(in: 30..<(self.scene?.frame.maxX ?? 300)-30), y:-50)
             shape.fillColor = .orange
             shape.physicsBody = SKPhysicsBody(circleOfRadius: 25)
-            shape.physicsBody?.isDynamic = false
+            shape.physicsBody?.isDynamic = true
             shape.physicsBody?.affectedByGravity = false
             shape.name = "ball"
             shape.physicsBody!.contactTestBitMask = 1
