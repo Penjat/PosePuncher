@@ -9,7 +9,7 @@ class RocketController {
     var leftEye: SKShapeNode?
     var head: SKShapeNode?
     
-    init() {
+    init(particleTarget: SKNode) {
         playerBody = SKNode()
         
         rightEye = SKShapeNode(circleOfRadius: 10 )
@@ -34,7 +34,7 @@ class RocketController {
         
         playerBody.addChild(leftEye!)
         
-        head = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 200, height: 200) )
+        head = SKShapeNode(rect: CGRect(x: -100, y: -100, width: 200, height: 200) )
         
         head?.strokeColor = .white
         head?.lineWidth = 2
@@ -44,6 +44,12 @@ class RocketController {
         head?.name = "fist"
         head?.physicsBody!.contactTestBitMask = 1
         playerBody.addChild(head!)
+        
+        let trail = SKEmitterNode(fileNamed: "RocketTrail")!
+        head?.addChild(trail)
+        trail.position = CGPoint(x: 0, y: 100)
+        trail.targetNode = particleTarget
+        
     }
     
     func setUpSink(posePublisher: AnyPublisher<Pose, Never>) {
@@ -56,7 +62,7 @@ class RocketController {
                 case .leftEye:
                     self.leftEye?.position = joint.position
                 case .nose:
-                    self.head?.position = CGPoint(x: joint.position.x-100, y: joint.position.y-100)
+                    self.head?.position = CGPoint(x: joint.position.x, y: joint.position.y)
                 default:
                     break
                 }

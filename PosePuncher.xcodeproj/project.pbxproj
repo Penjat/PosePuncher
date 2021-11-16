@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B295796274199E9009AEF47 /* RocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B295795274199E9009AEF47 /* RocketController.swift */; };
+		0B2957982741A90E009AEF47 /* RocketTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B2957972741A90E009AEF47 /* RocketTrail.sks */; };
 		0B2BDD182732127900E61B71 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BDD172732127900E61B71 /* Explosion.sks */; };
 		0B875CA5272DB987002C6887 /* PosePuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CA4272DB987002C6887 /* PosePuncherApp.swift */; };
 		0B875CA7272DB987002C6887 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CA6272DB987002C6887 /* ContentView.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		0B295795274199E9009AEF47 /* RocketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketController.swift; sourceTree = "<group>"; };
+		0B2957972741A90E009AEF47 /* RocketTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RocketTrail.sks; sourceTree = "<group>"; };
 		0B2BDD172732127900E61B71 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		0B875CA1272DB987002C6887 /* PosePuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosePuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B875CA4272DB987002C6887 /* PosePuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosePuncherApp.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				0B875CB9272E432D002C6887 /* ContentViewModel.swift */,
 				0B9EE18E2730E3D000F14DAE /* FireParticles.sks */,
 				0B2BDD172732127900E61B71 /* Explosion.sks */,
+				0B2957972741A90E009AEF47 /* RocketTrail.sks */,
 				0B9EE18A2730CFA700F14DAE /* CharacterView.swift */,
 				0B9EE18C2730DC8600F14DAE /* GameplayScene.swift */,
 				0B9EE1902731D49100F14DAE /* PlayerController.swift */,
@@ -218,6 +221,7 @@
 			files = (
 				0B9EE18F2730E3D000F14DAE /* FireParticles.sks in Resources */,
 				0B2BDD182732127900E61B71 /* Explosion.sks in Resources */,
+				0B2957982741A90E009AEF47 /* RocketTrail.sks in Resources */,
 				0B875CAC272DB988002C6887 /* Preview Assets.xcassets in Resources */,
 				0B875CA9272DB988002C6887 /* Assets.xcassets in Resources */,
 			);

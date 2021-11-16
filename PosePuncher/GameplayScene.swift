@@ -10,7 +10,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score = 0
     let scoreLabel = SKLabelNode(text: "0")
     
-    let player = RocketController()
+    var player: RocketController?
     var rightHand: SKEmitterNode?
     var leftHand: SKShapeNode?
     
@@ -18,20 +18,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         
         physicsWorld.contactDelegate = self
+        
     }
     
     func setUp() {
         videoViewModel.checkAuthorization()
         videoViewModel.setupOutput(delgate: poseViewModel)
-        scene?.addChild(player.playerBody)
         
+        player = RocketController(particleTarget: self)
+        scene?.addChild(player!.playerBody)
+        
+        
+        physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
         scoreLabel.fontSize = 65
         scoreLabel.fontColor = SKColor.green
         scoreLabel.position = CGPoint(x: 80, y: 80)
         scoreLabel.zRotation = 3.14159
         addChild(scoreLabel)
         
-        player.setUpSink(posePublisher: poseViewModel.pose.eraseToAnyPublisher())
+        player?.setUpSink(posePublisher: poseViewModel.pose.eraseToAnyPublisher())
         let update = SKAction.run(
         {
             let shape = SKShapeNode(circleOfRadius: 25 )
