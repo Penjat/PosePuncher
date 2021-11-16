@@ -14,7 +14,9 @@ class RocketController {
         
         rightEye = SKShapeNode(circleOfRadius: 10 )
 
-        rightEye?.fillColor = .blue
+//        rightEye?.fillColor = .blue
+        rightEye?.strokeColor = .white
+        rightEye?.lineWidth = 2
 //        rightEye?.physicsBody = SKPhysicsBody(circleOfRadius: 10)
 //        rightEye?.physicsBody?.isDynamic = true
         rightEye?.physicsBody?.affectedByGravity = false
@@ -25,7 +27,9 @@ class RocketController {
         
         leftEye = SKShapeNode(circleOfRadius: 10 )
         
-        leftEye?.fillColor = .blue
+//        leftEye?.fillColor = .blue
+        leftEye?.strokeColor = .white
+        leftEye?.lineWidth = 2
 //        leftEye?.physicsBody = SKPhysicsBody(circleOfRadius: 10)
 //        leftEye?.physicsBody?.isDynamic = true
         leftEye?.physicsBody?.affectedByGravity = false
@@ -34,11 +38,11 @@ class RocketController {
         
         playerBody.addChild(leftEye!)
         
-        head = SKShapeNode(rect: CGRect(x: -100, y: -100, width: 200, height: 200) )
+        head = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100) )
         
         head?.strokeColor = .white
         head?.lineWidth = 2
-        head?.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 200, height: 200))
+        head?.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 100, height: 100))
         head?.physicsBody?.isDynamic = false
         head?.physicsBody?.affectedByGravity = false
         head?.name = "fist"
@@ -47,7 +51,7 @@ class RocketController {
         
         let trail = SKEmitterNode(fileNamed: "RocketTrail")!
         head?.addChild(trail)
-        trail.position = CGPoint(x: 0, y: 100)
+        trail.position = CGPoint(x: 0, y: 50)
         trail.targetNode = particleTarget
         
     }
