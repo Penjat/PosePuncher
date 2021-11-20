@@ -11,9 +11,7 @@ class VideoService: ObservableObject {
                 print("Failed to setup camera with error \(error)")
                 return
             }
-
             self.videoCapture.delegate = self
-
             self.videoCapture.startCapturing()
         }
     }

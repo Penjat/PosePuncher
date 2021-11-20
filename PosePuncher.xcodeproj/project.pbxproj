@@ -124,21 +124,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B7524A52745E180009604FD /* StarPuncher */ = {
+		0B29DCB127498510008730B0 /* Effects */ = {
 			isa = PBXGroup;
 			children = (
 				0B9EE18E2730E3D000F14DAE /* FireParticles.sks */,
 				0B2BDD172732127900E61B71 /* Explosion.sks */,
 				0B2957972741A90E009AEF47 /* RocketTrail.sks */,
 				0B208DCD27435B1A0090B3FE /* SpaceBackground.sks */,
-				0B7524C42745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift */,
-				0B29DCA527484868008730B0 /* MainScene.swift */,
-				0B7524C32745EF26009604FD /* VideoCapture.swift */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
+		0B29DCB22749851F008730B0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
 				0B29DCAF27495389008730B0 /* PreviewView.swift */,
-				0B7524A62745E180009604FD /* StarPuncherApp.swift */,
 				0B7524A82745E180009604FD /* ContentView.swift */,
+				0B29DCA527484868008730B0 /* MainScene.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		0B29DCB327498532008730B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				0B7524C72745F8D7009604FD /* GameViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0B29DCB42749854D008730B0 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
 				0B7524C92745F9BB009604FD /* VideoService.swift */,
+				0B7524C32745EF26009604FD /* VideoCapture.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		0B29DCB5274985BD008730B0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0B7524C42745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0B7524A52745E180009604FD /* StarPuncher */ = {
+			isa = PBXGroup;
+			children = (
+				0B29DCB5274985BD008730B0 /* Extensions */,
+				0B29DCB42749854D008730B0 /* Repo */,
+				0B29DCB327498532008730B0 /* Model */,
+				0B29DCB22749851F008730B0 /* UI */,
+				0B29DCB127498510008730B0 /* Effects */,
+				0B7524A62745E180009604FD /* StarPuncherApp.swift */,
 				0B7524AA2745E182009604FD /* Assets.xcassets */,
 				0B7524AC2745E182009604FD /* Preview Content */,
 			);
