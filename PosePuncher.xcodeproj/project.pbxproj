@@ -16,6 +16,7 @@
 		0B29DCAA274872F1008730B0 /* RocketTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B2957972741A90E009AEF47 /* RocketTrail.sks */; };
 		0B29DCAE2748ABA0008730B0 /* PoseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CC4272E4EA1002C6887 /* PoseViewModel.swift */; };
 		0B29DCB027495389008730B0 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCAF27495389008730B0 /* PreviewView.swift */; };
+		0B29DCB627498A2E008730B0 /* StarShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B208DCB274346C00090B3FE /* StarShape.swift */; };
 		0B7524A72745E180009604FD /* StarPuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A62745E180009604FD /* StarPuncherApp.swift */; };
 		0B7524A92745E180009604FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A82745E180009604FD /* ContentView.swift */; };
 		0B7524AB2745E182009604FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B7524AA2745E182009604FD /* Assets.xcassets */; };
@@ -397,6 +398,7 @@
 				0B7524B52745E193009604FD /* CGPoint+Extension.swift in Sources */,
 				0B29DCA627484868008730B0 /* MainScene.swift in Sources */,
 				0B7524BD2745E196009604FD /* PoseNetInput.swift in Sources */,
+				0B29DCB627498A2E008730B0 /* StarShape.swift in Sources */,
 				0B7524B32745E193009604FD /* PlayerController.swift in Sources */,
 				0B7524B22745E18A009604FD /* PoseNetMobileNet075S16FP16.mlmodel in Sources */,
 				0B7524BA2745E196009604FD /* PoseBuilder.swift in Sources */,
