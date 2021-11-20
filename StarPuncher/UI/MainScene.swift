@@ -1,8 +1,31 @@
 import SpriteKit
 
+struct JointSegment: Hashable {
+        let jointA: Joint.Name
+        let jointB: Joint.Name
+    }
+
 class MainScene: SKScene {
     var score = 0
     let scoreLabel = SKLabelNode(text: "0")
+    
+    lazy var jointSegments = [
+            // The connected joints that are on the left side of the body.
+            //        JointSegment(jointA: .leftHip, jointB: .leftShoulder),
+        JointSegment(jointA: .leftShoulder, jointB: .leftElbow): bodyLine,
+            JointSegment(jointA: .leftElbow, jointB: .leftWrist): bodyLine,
+            //        JointSegment(jointA: .leftHip, jointB: .leftKnee),
+            //        JointSegment(jointA: .leftKnee, jointB: .leftAnkle),
+            //        // The connected joints that are on the right side of the body.
+            //        JointSegment(jointA: .rightHip, jointB: .rightShoulder),
+            JointSegment(jointA: .rightShoulder, jointB: .rightElbow): bodyLine,
+            JointSegment(jointA: .rightElbow, jointB: .rightWrist): bodyLine,
+            //        JointSegment(jointA: .rightHip, jointB: .rightKnee),
+            //        JointSegment(jointA: .rightKnee, jointB: .rightAnkle),
+            // The connected joints that cross over the body.
+            JointSegment(jointA: .leftShoulder, jointB: .rightShoulder): bodyLine,
+            //        JointSegment(jointA: .leftHip, jointB: .rightHip)
+        ]
     
     lazy var playerParts: [Joint.Name: SKShapeNode] = [.nose: nose,
                                                        .rightEye: eye,
@@ -21,6 +44,7 @@ class MainScene: SKScene {
         spaceBackground?.position = CGPoint(x: scene?.size.height ?? 700, y: 0.0)
         scene?.addChild(spaceBackground!)
         playerParts.values.forEach { self.scene?.addChild($0)}
+        jointSegments.values.forEach { self.scene?.addChild($0)}
         
         scoreLabel.fontSize = 65
         scoreLabel.fontColor = SKColor.green
@@ -49,6 +73,14 @@ class MainScene: SKScene {
         let seq = SKAction.sequence([SKAction.wait(forDuration: 2),update])
         let createLoop = SKAction.repeatForever(seq)
         run(createLoop)
+    }
+    
+    var bodyLine: SKShapeNode {
+        let line = SKShapeNode()
+    
+        line.strokeColor = SKColor.red
+        line.lineWidth = 4
+        return line
     }
     
     var nose: SKShapeNode {
@@ -86,7 +118,7 @@ class MainScene: SKScene {
         node.physicsBody?.isDynamic = false
         return node
     }
-    
+
     
     
     func drawPlayer(pose: Pose) {
@@ -99,6 +131,15 @@ class MainScene: SKScene {
                 node.isHidden = !value.isValid
             }
         })
+        
+        jointSegments.forEach { (key: JointSegment, value: SKShapeNode) in
+            let jointA = playerParts[key.jointA]
+            let jointB = playerParts[key.jointB]
+            var path = CGMutablePath()
+            path.move(to: jointA!.position )
+            path.addLine(to: jointB!.position)
+            value.path = path
+        }
     }
 }
 
