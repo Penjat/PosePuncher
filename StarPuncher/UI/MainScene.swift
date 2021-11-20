@@ -1,6 +1,9 @@
 import SpriteKit
 
 class MainScene: SKScene {
+    var score = 0
+    let scoreLabel = SKLabelNode(text: "0")
+    
     lazy var playerParts: [Joint.Name: SKShapeNode] = [.nose: nose,
                                                        .rightEye: eye,
                                                        .leftEye: eye,
@@ -19,11 +22,17 @@ class MainScene: SKScene {
         scene?.addChild(spaceBackground!)
         playerParts.values.forEach { self.scene?.addChild($0)}
         
+        scoreLabel.fontSize = 65
+        scoreLabel.fontColor = SKColor.green
+        scoreLabel.position = CGPoint(x: 80, y: 80)
+        scoreLabel.zRotation = 3.14159
+        addChild(scoreLabel)
+        
         let update = SKAction.run(
         {
             let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 25, height: 25))) )
             shape.position = CGPoint(x: CGFloat.random(in: 30..<(self.scene?.frame.maxX ?? 300)-30), y:-50)
-//            shape.fillColor = .orange
+            shape.fillColor = .yellow
             shape.physicsBody = SKPhysicsBody(circleOfRadius: 25)
             shape.physicsBody?.isDynamic = true
             shape.physicsBody?.affectedByGravity = false
@@ -104,8 +113,8 @@ extension MainScene: SKPhysicsContactDelegate {
             scene?.addChild(explosion!)
             nodeA.removeFromParent()
             self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
-//            score += 1
-//            scoreLabel.text = "\(score)"
+            score += 1
+            scoreLabel.text = "\(score)"
             
         } else if nodeB.name == "ball" && nodeA.name == "fist" {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
@@ -113,8 +122,8 @@ extension MainScene: SKPhysicsContactDelegate {
             scene?.addChild(explosion!)
             nodeB.removeFromParent()
             self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
-//            score += 1
-//            scoreLabel.text = "\(score)"
+            score += 1
+            scoreLabel.text = "\(score)"
         }
     }
 }
