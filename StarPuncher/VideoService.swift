@@ -2,7 +2,7 @@ import Combine
 import SwiftUI
 
 class VideoService: ObservableObject {
-    private let videoCapture = VideoCapture()
+    let videoCapture = VideoCapture()
     @Published var currentFrame: CGImage?
     
     func setUp() {

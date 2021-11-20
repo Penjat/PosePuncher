@@ -44,7 +44,7 @@ extension PoseViewModel: PoseNetDelegate {
         
         let poseBuilder = PoseBuilder(output: predictions,
                                       configuration: poseBuilderConfiguration,
-                                      inputImage: currentFrame)
+                                      inputSize: currentFrame.size)
         
         pose.send(poseBuilder.pose)
     }

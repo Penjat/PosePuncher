@@ -15,6 +15,7 @@
 		0B29DCA9274872F1008730B0 /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B9EE18E2730E3D000F14DAE /* FireParticles.sks */; };
 		0B29DCAA274872F1008730B0 /* RocketTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B2957972741A90E009AEF47 /* RocketTrail.sks */; };
 		0B29DCAE2748ABA0008730B0 /* PoseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CC4272E4EA1002C6887 /* PoseViewModel.swift */; };
+		0B29DCB027495389008730B0 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCAF27495389008730B0 /* PreviewView.swift */; };
 		0B7524A72745E180009604FD /* StarPuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A62745E180009604FD /* StarPuncherApp.swift */; };
 		0B7524A92745E180009604FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A82745E180009604FD /* ContentView.swift */; };
 		0B7524AB2745E182009604FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B7524AA2745E182009604FD /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 		0B295795274199E9009AEF47 /* RocketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketController.swift; sourceTree = "<group>"; };
 		0B2957972741A90E009AEF47 /* RocketTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RocketTrail.sks; sourceTree = "<group>"; };
 		0B29DCA527484868008730B0 /* MainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
+		0B29DCAF27495389008730B0 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		0B2BDD172732127900E61B71 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		0B7524A42745E180009604FD /* StarPuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarPuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B7524A62745E180009604FD /* StarPuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarPuncherApp.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				0B7524C42745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift */,
 				0B29DCA527484868008730B0 /* MainScene.swift */,
 				0B7524C32745EF26009604FD /* VideoCapture.swift */,
+				0B29DCAF27495389008730B0 /* PreviewView.swift */,
 				0B7524A62745E180009604FD /* StarPuncherApp.swift */,
 				0B7524A82745E180009604FD /* ContentView.swift */,
 				0B7524C72745F8D7009604FD /* GameViewModel.swift */,
@@ -340,6 +343,7 @@
 				0B7524CA2745F9BB009604FD /* VideoService.swift in Sources */,
 				0B7524C82745F8D7009604FD /* GameViewModel.swift in Sources */,
 				0B7524BB2745E196009604FD /* Pose.swift in Sources */,
+				0B29DCB027495389008730B0 /* PreviewView.swift in Sources */,
 				0B7524A92745E180009604FD /* ContentView.swift in Sources */,
 				0B7524B62745E196009604FD /* PoseNet.swift in Sources */,
 				0B7524B72745E196009604FD /* Joint.swift in Sources */,

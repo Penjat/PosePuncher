@@ -2,22 +2,21 @@ import SpriteKit
 
 class MainScene: SKScene, SKPhysicsContactDelegate {
     lazy var playerParts: [Joint.Name: SKShapeNode] = [.nose: nose,
-                                                  .rightEye: eye,
-                                                  .leftEye: eye,
+                                                       .rightEye: eye,
+                                                       .leftEye: eye,
                                                        .rightShoulder: joint,
                                                        .leftShoulder: joint,
                                                        .rightElbow: joint,
                                                        .leftElbow: joint,
-                                                       .rightWrist: joint,
-                                                       .leftWrist: joint,
+                                                       .rightWrist: fist,
+                                                       .leftWrist: fist,
                                                        .rightEar: ear,
                                                        .leftEar: ear]
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         let spaceBackground = SKEmitterNode(fileNamed: "SpaceBackground")
-        spaceBackground?.position = CGPoint(x: 700, y: 0.0)
+        spaceBackground?.position = CGPoint(x: scene?.size.height ?? 700, y: 0.0)
         scene?.addChild(spaceBackground!)
-        
         playerParts.values.forEach { self.scene?.addChild($0)}
     }
     
@@ -45,9 +44,23 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         return node
     }
     
+    var fist: SKShapeNode {
+        let fistSize = 10.0
+        let node = SKShapeNode(circleOfRadius: fistSize)
+        node.fillColor = .red
+        node.name = "fist"
+        node.physicsBody = SKPhysicsBody(circleOfRadius: fistSize)
+        node.physicsBody?.contactTestBitMask = 1
+        node.physicsBody?.affectedByGravity = false
+        node.physicsBody?.isDynamic = false
+        return node
+    }
+    
     func didBegin(_ contact: SKPhysicsContact) {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
+        
+        print("contact")
     }
     
     func drawPlayer(pose: Pose) {
@@ -55,8 +68,9 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         pose.joints.forEach({ (key: Joint.Name, value: Joint) in
-            if let node = playerParts[key], value.isValid {
-                node.position = value.position
+            if let node = playerParts[key] {
+                node.position = CGPoint(x: (scene?.size.width ?? 0) - value.position.x, y: value.position.y)
+                node.isHidden = !value.isValid
             }
         })
     }
