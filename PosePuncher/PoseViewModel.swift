@@ -1,7 +1,13 @@
 import AVFoundation
 import Foundation
 import VideoToolbox
+#if os(macOS)
 import AppKit
+#endif
+
+#if os(iOS)
+import UIKit
+#endif
 import Combine
 
 class PoseViewModel: NSObject, ObservableObject {
@@ -22,8 +28,6 @@ class PoseViewModel: NSObject, ObservableObject {
         }
         
         poseNet.delegate = self
-        
-        
     }
 }
 
@@ -40,7 +44,7 @@ extension PoseViewModel: PoseNetDelegate {
         
         let poseBuilder = PoseBuilder(output: predictions,
                                       configuration: poseBuilderConfiguration,
-                                      inputImage: currentFrame)
+                                      inputSize: currentFrame.size)
         
         pose.send(poseBuilder.pose)
     }
