@@ -8,10 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		0B208DCC274346C00090B3FE /* StarShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B208DCB274346C00090B3FE /* StarShape.swift */; };
-		0B208DCE27435B1A0090B3FE /* SpaceBackground.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B208DCD27435B1A0090B3FE /* SpaceBackground.sks */; };
 		0B295796274199E9009AEF47 /* RocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B295795274199E9009AEF47 /* RocketController.swift */; };
-		0B2957982741A90E009AEF47 /* RocketTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B2957972741A90E009AEF47 /* RocketTrail.sks */; };
-		0B2BDD182732127900E61B71 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BDD172732127900E61B71 /* Explosion.sks */; };
+		0B29DCA627484868008730B0 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCA527484868008730B0 /* MainScene.swift */; };
+		0B29DCA7274872F1008730B0 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BDD172732127900E61B71 /* Explosion.sks */; };
+		0B29DCA8274872F1008730B0 /* SpaceBackground.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B208DCD27435B1A0090B3FE /* SpaceBackground.sks */; };
+		0B29DCA9274872F1008730B0 /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B9EE18E2730E3D000F14DAE /* FireParticles.sks */; };
+		0B29DCAA274872F1008730B0 /* RocketTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B2957972741A90E009AEF47 /* RocketTrail.sks */; };
+		0B29DCAE2748ABA0008730B0 /* PoseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CC4272E4EA1002C6887 /* PoseViewModel.swift */; };
+		0B7524A72745E180009604FD /* StarPuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A62745E180009604FD /* StarPuncherApp.swift */; };
+		0B7524A92745E180009604FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A82745E180009604FD /* ContentView.swift */; };
+		0B7524AB2745E182009604FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B7524AA2745E182009604FD /* Assets.xcassets */; };
+		0B7524AE2745E182009604FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B7524AD2745E182009604FD /* Preview Assets.xcassets */; };
+		0B7524B22745E18A009604FD /* PoseNetMobileNet075S16FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CDD272E5153002C6887 /* PoseNetMobileNet075S16FP16.mlmodel */; };
+		0B7524B32745E193009604FD /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9EE1902731D49100F14DAE /* PlayerController.swift */; };
+		0B7524B42745E193009604FD /* CGImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CD9272E5028002C6887 /* CGImage+Extension.swift */; };
+		0B7524B52745E193009604FD /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CDA272E5028002C6887 /* CGPoint+Extension.swift */; };
+		0B7524B62745E196009604FD /* PoseNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CC7272E501E002C6887 /* PoseNet.swift */; };
+		0B7524B72745E196009604FD /* Joint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CCD272E5023002C6887 /* Joint.swift */; };
+		0B7524B82745E196009604FD /* PoseBuilder+Multiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CCF272E5023002C6887 /* PoseBuilder+Multiple.swift */; };
+		0B7524B92745E196009604FD /* PoseBuilder+Single.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CD2272E5024002C6887 /* PoseBuilder+Single.swift */; };
+		0B7524BA2745E196009604FD /* PoseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CD1272E5024002C6887 /* PoseBuilder.swift */; };
+		0B7524BB2745E196009604FD /* Pose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CCE272E5023002C6887 /* Pose.swift */; };
+		0B7524BC2745E196009604FD /* PoseBuilderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CD0272E5023002C6887 /* PoseBuilderConfiguration.swift */; };
+		0B7524BD2745E196009604FD /* PoseNetInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CC9272E501E002C6887 /* PoseNetInput.swift */; };
+		0B7524BE2745E196009604FD /* PoseNetOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CC6272E501E002C6887 /* PoseNetOutput.swift */; };
+		0B7524C52745EF26009604FD /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524C32745EF26009604FD /* VideoCapture.swift */; };
+		0B7524C62745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524C42745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift */; };
+		0B7524C82745F8D7009604FD /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524C72745F8D7009604FD /* GameViewModel.swift */; };
+		0B7524CA2745F9BB009604FD /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524C92745F9BB009604FD /* VideoService.swift */; };
 		0B875CA5272DB987002C6887 /* PosePuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CA4272DB987002C6887 /* PosePuncherApp.swift */; };
 		0B875CA7272DB987002C6887 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CA6272DB987002C6887 /* ContentView.swift */; };
 		0B875CA9272DB988002C6887 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B875CA8272DB988002C6887 /* Assets.xcassets */; };
@@ -33,7 +57,6 @@
 		0B875CDE272E5153002C6887 /* PoseNetMobileNet075S16FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CDD272E5153002C6887 /* PoseNetMobileNet075S16FP16.mlmodel */; };
 		0B9EE18B2730CFA700F14DAE /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9EE18A2730CFA700F14DAE /* CharacterView.swift */; };
 		0B9EE18D2730DC8600F14DAE /* GameplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9EE18C2730DC8600F14DAE /* GameplayScene.swift */; };
-		0B9EE18F2730E3D000F14DAE /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B9EE18E2730E3D000F14DAE /* FireParticles.sks */; };
 		0B9EE1912731D49100F14DAE /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9EE1902731D49100F14DAE /* PlayerController.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +65,17 @@
 		0B208DCD27435B1A0090B3FE /* SpaceBackground.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpaceBackground.sks; sourceTree = "<group>"; };
 		0B295795274199E9009AEF47 /* RocketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketController.swift; sourceTree = "<group>"; };
 		0B2957972741A90E009AEF47 /* RocketTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RocketTrail.sks; sourceTree = "<group>"; };
+		0B29DCA527484868008730B0 /* MainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
 		0B2BDD172732127900E61B71 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
+		0B7524A42745E180009604FD /* StarPuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarPuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B7524A62745E180009604FD /* StarPuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarPuncherApp.swift; sourceTree = "<group>"; };
+		0B7524A82745E180009604FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0B7524AA2745E182009604FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0B7524AD2745E182009604FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0B7524C32745EF26009604FD /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
+		0B7524C42745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoOrientation+Extension.swift"; sourceTree = "<group>"; };
+		0B7524C72745F8D7009604FD /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		0B7524C92745F9BB009604FD /* VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
 		0B875CA1272DB987002C6887 /* PosePuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosePuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B875CA4272DB987002C6887 /* PosePuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosePuncherApp.swift; sourceTree = "<group>"; };
 		0B875CA6272DB987002C6887 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +105,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0B7524A12745E180009604FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0B875C9E272DB987002C6887 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -82,10 +122,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B7524A52745E180009604FD /* StarPuncher */ = {
+			isa = PBXGroup;
+			children = (
+				0B9EE18E2730E3D000F14DAE /* FireParticles.sks */,
+				0B2BDD172732127900E61B71 /* Explosion.sks */,
+				0B2957972741A90E009AEF47 /* RocketTrail.sks */,
+				0B208DCD27435B1A0090B3FE /* SpaceBackground.sks */,
+				0B7524C42745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift */,
+				0B29DCA527484868008730B0 /* MainScene.swift */,
+				0B7524C32745EF26009604FD /* VideoCapture.swift */,
+				0B7524A62745E180009604FD /* StarPuncherApp.swift */,
+				0B7524A82745E180009604FD /* ContentView.swift */,
+				0B7524C72745F8D7009604FD /* GameViewModel.swift */,
+				0B7524C92745F9BB009604FD /* VideoService.swift */,
+				0B7524AA2745E182009604FD /* Assets.xcassets */,
+				0B7524AC2745E182009604FD /* Preview Content */,
+			);
+			path = StarPuncher;
+			sourceTree = "<group>";
+		};
+		0B7524AC2745E182009604FD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0B7524AD2745E182009604FD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		0B875C98272DB987002C6887 = {
 			isa = PBXGroup;
 			children = (
 				0B875CA3272DB987002C6887 /* PosePuncher */,
+				0B7524A52745E180009604FD /* StarPuncher */,
 				0B875CA2272DB987002C6887 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				0B875CA1272DB987002C6887 /* PosePuncher.app */,
+				0B7524A42745E180009604FD /* StarPuncher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,10 +180,6 @@
 				0B875CC4272E4EA1002C6887 /* PoseViewModel.swift */,
 				0B875CB7272E417B002C6887 /* PlayerView.swift */,
 				0B875CB9272E432D002C6887 /* ContentViewModel.swift */,
-				0B9EE18E2730E3D000F14DAE /* FireParticles.sks */,
-				0B2BDD172732127900E61B71 /* Explosion.sks */,
-				0B2957972741A90E009AEF47 /* RocketTrail.sks */,
-				0B208DCD27435B1A0090B3FE /* SpaceBackground.sks */,
 				0B9EE18A2730CFA700F14DAE /* CharacterView.swift */,
 				0B9EE18C2730DC8600F14DAE /* GameplayScene.swift */,
 				0B295795274199E9009AEF47 /* RocketController.swift */,
@@ -170,6 +236,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0B7524A32745E180009604FD /* StarPuncher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B7524B12745E182009604FD /* Build configuration list for PBXNativeTarget "StarPuncher" */;
+			buildPhases = (
+				0B7524A02745E180009604FD /* Sources */,
+				0B7524A12745E180009604FD /* Frameworks */,
+				0B7524A22745E180009604FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StarPuncher;
+			productName = StarPuncher;
+			productReference = 0B7524A42745E180009604FD /* StarPuncher.app */;
+			productType = "com.apple.product-type.application";
+		};
 		0B875CA0272DB987002C6887 /* PosePuncher */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0B875CB0272DB988002C6887 /* Build configuration list for PBXNativeTarget "PosePuncher" */;
@@ -197,6 +280,9 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					0B7524A32745E180009604FD = {
+						CreatedOnToolsVersion = 13.0;
+					};
 					0B875CA0272DB987002C6887 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -216,19 +302,29 @@
 			projectRoot = "";
 			targets = (
 				0B875CA0272DB987002C6887 /* PosePuncher */,
+				0B7524A32745E180009604FD /* StarPuncher */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0B7524A22745E180009604FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B7524AE2745E182009604FD /* Preview Assets.xcassets in Resources */,
+				0B7524AB2745E182009604FD /* Assets.xcassets in Resources */,
+				0B29DCA9274872F1008730B0 /* FireParticles.sks in Resources */,
+				0B29DCA8274872F1008730B0 /* SpaceBackground.sks in Resources */,
+				0B29DCAA274872F1008730B0 /* RocketTrail.sks in Resources */,
+				0B29DCA7274872F1008730B0 /* Explosion.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0B875C9F272DB987002C6887 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B208DCE27435B1A0090B3FE /* SpaceBackground.sks in Resources */,
-				0B9EE18F2730E3D000F14DAE /* FireParticles.sks in Resources */,
-				0B2BDD182732127900E61B71 /* Explosion.sks in Resources */,
-				0B2957982741A90E009AEF47 /* RocketTrail.sks in Resources */,
 				0B875CAC272DB988002C6887 /* Preview Assets.xcassets in Resources */,
 				0B875CA9272DB988002C6887 /* Assets.xcassets in Resources */,
 			);
@@ -237,6 +333,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0B7524A02745E180009604FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B7524CA2745F9BB009604FD /* VideoService.swift in Sources */,
+				0B7524C82745F8D7009604FD /* GameViewModel.swift in Sources */,
+				0B7524BB2745E196009604FD /* Pose.swift in Sources */,
+				0B7524A92745E180009604FD /* ContentView.swift in Sources */,
+				0B7524B62745E196009604FD /* PoseNet.swift in Sources */,
+				0B7524B72745E196009604FD /* Joint.swift in Sources */,
+				0B7524A72745E180009604FD /* StarPuncherApp.swift in Sources */,
+				0B29DCAE2748ABA0008730B0 /* PoseViewModel.swift in Sources */,
+				0B7524B92745E196009604FD /* PoseBuilder+Single.swift in Sources */,
+				0B7524B82745E196009604FD /* PoseBuilder+Multiple.swift in Sources */,
+				0B7524BC2745E196009604FD /* PoseBuilderConfiguration.swift in Sources */,
+				0B7524C52745EF26009604FD /* VideoCapture.swift in Sources */,
+				0B7524BE2745E196009604FD /* PoseNetOutput.swift in Sources */,
+				0B7524B52745E193009604FD /* CGPoint+Extension.swift in Sources */,
+				0B29DCA627484868008730B0 /* MainScene.swift in Sources */,
+				0B7524BD2745E196009604FD /* PoseNetInput.swift in Sources */,
+				0B7524B32745E193009604FD /* PlayerController.swift in Sources */,
+				0B7524B22745E18A009604FD /* PoseNetMobileNet075S16FP16.mlmodel in Sources */,
+				0B7524BA2745E196009604FD /* PoseBuilder.swift in Sources */,
+				0B7524C62745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift in Sources */,
+				0B7524B42745E193009604FD /* CGImage+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0B875C9D272DB987002C6887 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +393,73 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0B7524AF2745E182009604FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"StarPuncher/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "You use the camera to control the game";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.StarPuncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0B7524B02745E182009604FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"StarPuncher/Preview Content\"";
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "You use the camera to control the game";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.StarPuncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		0B875CAE272DB988002C6887 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -447,6 +638,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0B7524B12745E182009604FD /* Build configuration list for PBXNativeTarget "StarPuncher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B7524AF2745E182009604FD /* Debug */,
+				0B7524B02745E182009604FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0B875C9C272DB987002C6887 /* Build configuration list for PBXProject "PosePuncher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
