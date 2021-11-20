@@ -9,7 +9,9 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
                                                        .rightElbow: joint,
                                                        .leftElbow: joint,
                                                        .rightWrist: joint,
-                                                       .leftWrist: joint]
+                                                       .leftWrist: joint,
+                                                       .rightEar: ear,
+                                                       .leftEar: ear]
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         let spaceBackground = SKEmitterNode(fileNamed: "SpaceBackground")
@@ -31,6 +33,12 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
         return node
     }
     
+    var ear: SKShapeNode {
+        let node = SKShapeNode(rectOf: CGSize(width: 4, height: 8))
+        node.fillColor = .red
+        return node
+    }
+    
     var joint: SKShapeNode {
         let node = SKShapeNode(circleOfRadius: 5)
         node.fillColor = .blue
@@ -47,7 +55,7 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         pose.joints.forEach({ (key: Joint.Name, value: Joint) in
-            if let node = playerParts[key] {
+            if let node = playerParts[key], value.isValid {
                 node.position = value.position
             }
         })

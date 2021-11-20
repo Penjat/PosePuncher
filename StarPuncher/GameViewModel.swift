@@ -40,6 +40,10 @@ class GameViewModel: ObservableObject {
 extension GameViewModel: PoseNetDelegate {
     func poseNet(_ poseNet: PoseNet, didPredict predictions: PoseNetOutput) {
 //        print("recieved prediction")
+        defer {
+            // Release `currentFrame` when exiting this method.
+            self.videoService.currentFrame = nil
+        }
         guard let currentFrame = videoService.currentFrame else {
             return
         }

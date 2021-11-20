@@ -21,9 +21,9 @@ class VideoService: ObservableObject {
 
 extension VideoService: VideoCaptureDelegate {
     func videoCapture(_ videoCapture: VideoCapture, didCaptureFrame capturedImage: CGImage?) {
-//        guard currentFrame == nil else {
-//            return
-//        }
+        guard currentFrame == nil else {
+            return
+        }
         guard let image = capturedImage else {
             fatalError("Captured image is null")
         }
