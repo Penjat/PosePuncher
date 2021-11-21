@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct TitleView: View {
+    @EnvironmentObject var viewModel: GameViewModel
     var body: some View {
-        Text("Title VIew")
+        CameraView(session: viewModel.videoService.videoCapture.captureSession).opacity(0.2).aspectRatio( contentMode: .fit)
     }
 }
 

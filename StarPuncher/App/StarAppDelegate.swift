@@ -3,6 +3,7 @@ import SwiftUI
 
 class StarAppDelegate: NSObject, UIApplicationDelegate {
     var additionalWindows = [UIWindow]()
+    let viewModel = GameViewModel()
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
@@ -60,6 +61,6 @@ class StarAppDelegate: NSObject, UIApplicationDelegate {
     
     func configureInterface(window: UIWindow) {
 //        window.rootViewController = TestViewController.init(number: 0)
-        window.rootViewController = UIHostingController(rootView: ExternalDisplayView(size: window.bounds.size))
+        window.rootViewController = UIHostingController(rootView: ExternalDisplayView(size: window.bounds.size).environmentObject(viewModel))
     }
 }

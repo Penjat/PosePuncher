@@ -52,7 +52,7 @@ extension GameViewModel: PoseNetDelegate {
         
         let poseBuilder = PoseBuilder(output: predictions,
                                       configuration: poseBuilderConfiguration,
-                                      inputSize: currentFrame.size)
+                                      inputSize: currentFrame.size)//scene.size
         pose.send(poseBuilder.pose)
     }
 }
