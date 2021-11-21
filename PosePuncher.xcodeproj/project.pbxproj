@@ -20,6 +20,8 @@
 		0B29DCB9274AB3BD008730B0 /* StarAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCB8274AB3BD008730B0 /* StarAppDelegate.swift */; };
 		0B29DCBB274AB884008730B0 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCBA274AB884008730B0 /* TestViewController.swift */; };
 		0B29DCBD274AC9FA008730B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCBC274AC9FA008730B0 /* SceneDelegate.swift */; };
+		0B29DCC0274AEC56008730B0 /* ExternalDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCBF274AEC56008730B0 /* ExternalDisplayView.swift */; };
+		0B29DCC3274AF268008730B0 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCC2274AF268008730B0 /* TitleView.swift */; };
 		0B7524A72745E180009604FD /* StarPuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A62745E180009604FD /* StarPuncherApp.swift */; };
 		0B7524A92745E180009604FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A82745E180009604FD /* ContentView.swift */; };
 		0B7524AB2745E182009604FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B7524AA2745E182009604FD /* Assets.xcassets */; };
@@ -75,6 +77,8 @@
 		0B29DCB8274AB3BD008730B0 /* StarAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarAppDelegate.swift; sourceTree = "<group>"; };
 		0B29DCBA274AB884008730B0 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		0B29DCBC274AC9FA008730B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0B29DCBF274AEC56008730B0 /* ExternalDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayView.swift; sourceTree = "<group>"; };
+		0B29DCC2274AF268008730B0 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		0B2BDD172732127900E61B71 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		0B7524A42745E180009604FD /* StarPuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarPuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B7524A62745E180009604FD /* StarPuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarPuncherApp.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 		0B29DCB22749851F008730B0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0B29DCC1274AF254008730B0 /* Title */,
+				0B29DCBE274AEC33008730B0 /* External Display */,
 				0B29DCAF27495389008730B0 /* PreviewView.swift */,
 				0B7524A82745E180009604FD /* ContentView.swift */,
 				0B29DCA527484868008730B0 /* MainScene.swift */,
@@ -186,6 +192,22 @@
 				0B29DCBC274AC9FA008730B0 /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		0B29DCBE274AEC33008730B0 /* External Display */ = {
+			isa = PBXGroup;
+			children = (
+				0B29DCBF274AEC56008730B0 /* ExternalDisplayView.swift */,
+			);
+			path = "External Display";
+			sourceTree = "<group>";
+		};
+		0B29DCC1274AF254008730B0 /* Title */ = {
+			isa = PBXGroup;
+			children = (
+				0B29DCC2274AF268008730B0 /* TitleView.swift */,
+			);
+			path = Title;
 			sourceTree = "<group>";
 		};
 		0B7524A52745E180009604FD /* StarPuncher */ = {
@@ -401,6 +423,7 @@
 				0B7524CA2745F9BB009604FD /* VideoService.swift in Sources */,
 				0B7524C82745F8D7009604FD /* GameViewModel.swift in Sources */,
 				0B7524BB2745E196009604FD /* Pose.swift in Sources */,
+				0B29DCC3274AF268008730B0 /* TitleView.swift in Sources */,
 				0B29DCB027495389008730B0 /* PreviewView.swift in Sources */,
 				0B7524A92745E180009604FD /* ContentView.swift in Sources */,
 				0B7524B62745E196009604FD /* PoseNet.swift in Sources */,
@@ -422,6 +445,7 @@
 				0B29DCBD274AC9FA008730B0 /* SceneDelegate.swift in Sources */,
 				0B7524B22745E18A009604FD /* PoseNetMobileNet075S16FP16.mlmodel in Sources */,
 				0B7524BA2745E196009604FD /* PoseBuilder.swift in Sources */,
+				0B29DCC0274AEC56008730B0 /* ExternalDisplayView.swift in Sources */,
 				0B7524C62745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift in Sources */,
 				0B7524B42745E193009604FD /* CGImage+Extension.swift in Sources */,
 			);

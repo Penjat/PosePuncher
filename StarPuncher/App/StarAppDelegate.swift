@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 
 class StarAppDelegate: NSObject, UIApplicationDelegate {
     var additionalWindows = [UIWindow]()
@@ -8,26 +9,6 @@ class StarAppDelegate: NSObject, UIApplicationDelegate {
     ) -> Bool {
         NotificationCenter.default.addObserver(forName: UIScreen.didConnectNotification,
                                                object: nil, queue: nil) { (notification) in
-            //            let newScreen = notification.object as! UIScreen
-            //               let screenDimensions = newScreen.bounds
-            //
-            //
-            //
-            //            print("Screen connected \(screenDimensions)")
-            // Configure a window for the screen.
-            //            let newWindow = UIWindow(frame: screenDimensions)
-            //               newWindow.screen = newScreen
-            //            newWindow.windowScene
-            //               // Install a custom root view controller in the window.
-            ////                   self.configureAuxilliaryInterface(with: newWindow)
-            //            newWindow.rootViewController = TestViewController.init()
-            //
-            //               // You must show the window explicitly.
-            //               newWindow.isHidden = false
-            //               // Save a reference to the window in a local array.
-            ////                   self.additionalWindows.append(newWindow)}
-            //            newWindow.makeKeyAndVisible()
-            
             guard let newScreen = notification.object as? UIScreen else {return}
             // Give the system time to update the connected scenes
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -78,6 +59,7 @@ class StarAppDelegate: NSObject, UIApplicationDelegate {
     }
     
     func configureInterface(window: UIWindow) {
-        window.rootViewController = TestViewController.init(number: 0)
+//        window.rootViewController = TestViewController.init(number: 0)
+        window.rootViewController = UIHostingController(rootView: ExternalDisplayView(size: window.bounds.size))
     }
 }

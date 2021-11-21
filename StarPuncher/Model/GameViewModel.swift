@@ -12,14 +12,17 @@ class GameViewModel: ObservableObject {
     
     init() {
         print("Init")
+        scene = MainScene()
+    }
+    func setUp(size: CGSize) {
         do {
             poseNet = try PoseNet()
         } catch {
             fatalError("Failed to load model. \(error.localizedDescription)")
         }
         
-        scene = MainScene()
-        scene.size = UIScreen.main.bounds.size
+        
+        scene.size = size
         scene.scaleMode = .aspectFit
         scene.backgroundColor = .black
         
