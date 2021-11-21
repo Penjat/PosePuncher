@@ -1,31 +1,32 @@
 import SpriteKit
 
 struct JointSegment: Hashable {
-        let jointA: Joint.Name
-        let jointB: Joint.Name
-    }
+    let jointA: Joint.Name
+    let jointB: Joint.Name
+}
 
 class MainScene: SKScene {
     var score = 0
     let scoreLabel = SKLabelNode(text: "0")
-    
+    let rocketTrail = SKEmitterNode(fileNamed: "RocketTrail")!
+       
     lazy var jointSegments = [
-            // The connected joints that are on the left side of the body.
-            //        JointSegment(jointA: .leftHip, jointB: .leftShoulder),
+        // The connected joints that are on the left side of the body.
+        JointSegment(jointA: .leftHip, jointB: .leftShoulder): bodyLine,
         JointSegment(jointA: .leftShoulder, jointB: .leftElbow): bodyLine,
-            JointSegment(jointA: .leftElbow, jointB: .leftWrist): bodyLine,
-            //        JointSegment(jointA: .leftHip, jointB: .leftKnee),
-            //        JointSegment(jointA: .leftKnee, jointB: .leftAnkle),
-            //        // The connected joints that are on the right side of the body.
-            //        JointSegment(jointA: .rightHip, jointB: .rightShoulder),
-            JointSegment(jointA: .rightShoulder, jointB: .rightElbow): bodyLine,
-            JointSegment(jointA: .rightElbow, jointB: .rightWrist): bodyLine,
-            //        JointSegment(jointA: .rightHip, jointB: .rightKnee),
-            //        JointSegment(jointA: .rightKnee, jointB: .rightAnkle),
-            // The connected joints that cross over the body.
-            JointSegment(jointA: .leftShoulder, jointB: .rightShoulder): bodyLine,
-            //        JointSegment(jointA: .leftHip, jointB: .rightHip)
-        ]
+        JointSegment(jointA: .leftElbow, jointB: .leftWrist): bodyLine,
+        //        JointSegment(jointA: .leftHip, jointB: .leftKnee),
+        //        JointSegment(jointA: .leftKnee, jointB: .leftAnkle),
+        //        // The connected joints that are on the right side of the body.
+        JointSegment(jointA: .rightHip, jointB: .rightShoulder): bodyLine,
+        JointSegment(jointA: .rightShoulder, jointB: .rightElbow): bodyLine,
+        JointSegment(jointA: .rightElbow, jointB: .rightWrist): bodyLine,
+        //        JointSegment(jointA: .rightHip, jointB: .rightKnee),
+        //        JointSegment(jointA: .rightKnee, jointB: .rightAnkle),
+        // The connected joints that cross over the body.
+        JointSegment(jointA: .leftShoulder, jointB: .rightShoulder): bodyLine,
+        JointSegment(jointA: .leftHip, jointB: .rightHip): bodyLine
+    ]
     
     lazy var playerParts: [Joint.Name: SKShapeNode] = [.nose: nose,
                                                        .rightEye: eye,
@@ -34,6 +35,8 @@ class MainScene: SKScene {
                                                        .leftShoulder: joint,
                                                        .rightElbow: joint,
                                                        .leftElbow: joint,
+                                                       .rightHip: joint,
+                                                       .leftHip: joint,
                                                        .rightWrist: fist,
                                                        .leftWrist: fist,
                                                        .rightEar: ear,
@@ -41,10 +44,15 @@ class MainScene: SKScene {
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         let spaceBackground = SKEmitterNode(fileNamed: "SpaceBackground")
-        spaceBackground?.position = CGPoint(x: scene?.size.height ?? 700, y: 0.0)
+        spaceBackground?.position = CGPoint(x: (scene?.size.width ?? 700)/2, y: 0.0)
+        spaceBackground?.particlePositionRange = CGVector(dx: scene?.size.width ?? 100, dy: 1)
+        spaceBackground?.advanceSimulationTime(9.0)
         scene?.addChild(spaceBackground!)
         playerParts.values.forEach { self.scene?.addChild($0)}
         jointSegments.values.forEach { self.scene?.addChild($0)}
+        
+        rocketTrail.targetNode = scene
+        scene?.addChild(rocketTrail)
         
         scoreLabel.fontSize = 65
         scoreLabel.fontColor = SKColor.green
@@ -53,22 +61,22 @@ class MainScene: SKScene {
         addChild(scoreLabel)
         
         let update = SKAction.run(
-        {
-            let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 25, height: 25))) )
-            shape.position = CGPoint(x: CGFloat.random(in: 30..<(self.scene?.frame.maxX ?? 300)-30), y:-50)
-            shape.fillColor = .yellow
-            shape.physicsBody = SKPhysicsBody(circleOfRadius: 25)
-            shape.physicsBody?.isDynamic = true
-            shape.physicsBody?.affectedByGravity = false
-            shape.name = "ball"
-            shape.physicsBody!.contactTestBitMask = 1
-            let moveAction = SKAction.moveTo(y: (self.scene?.frame.maxY ?? 300) + 50, duration: 10.0)
-            let rotateAction =
-            SKAction.repeatForever(SKAction.rotate(byAngle: 3.1, duration: 2))
-            let action = SKAction.group([rotateAction,moveAction])
-            shape.run(action)
-            self.addChild(shape)
-        })
+            {
+                let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 25, height: 25))) )
+                shape.position = CGPoint(x: CGFloat.random(in: 30..<(self.scene?.frame.maxX ?? 300)-30), y:-50)
+                shape.fillColor = .yellow
+                shape.physicsBody = SKPhysicsBody(circleOfRadius: 25)
+                shape.physicsBody?.isDynamic = true
+                shape.physicsBody?.affectedByGravity = false
+                shape.name = "ball"
+                shape.physicsBody!.contactTestBitMask = 1
+                let moveAction = SKAction.moveTo(y: (self.scene?.frame.maxY ?? 300) + 50, duration: 10.0)
+                let rotateAction =
+                SKAction.repeatForever(SKAction.rotate(byAngle: 3.1, duration: 2))
+                let action = SKAction.group([rotateAction,moveAction])
+                shape.run(action)
+                self.addChild(shape)
+            })
         
         let seq = SKAction.sequence([SKAction.wait(forDuration: 2),update])
         let createLoop = SKAction.repeatForever(seq)
@@ -77,15 +85,16 @@ class MainScene: SKScene {
     
     var bodyLine: SKShapeNode {
         let line = SKShapeNode()
-    
-        line.strokeColor = SKColor.red
+        
+        line.strokeColor = SKColor.white
         line.lineWidth = 4
         return line
     }
     
     var nose: SKShapeNode {
-        let node = SKShapeNode(circleOfRadius: 5)
-        node.fillColor = .blue
+        let node = SKShapeNode(circleOfRadius: 50)
+        node.lineWidth = 4
+        node.strokeColor = .white
         return node
     }
     
@@ -103,12 +112,12 @@ class MainScene: SKScene {
     
     var joint: SKShapeNode {
         let node = SKShapeNode(circleOfRadius: 5)
-        node.fillColor = .blue
+        node.fillColor = .white
         return node
     }
     
     var fist: SKShapeNode {
-        let fistSize = 10.0
+        let fistSize = 16.0
         let node = SKShapeNode(circleOfRadius: fistSize)
         node.fillColor = .red
         node.name = "fist"
@@ -118,8 +127,6 @@ class MainScene: SKScene {
         node.physicsBody?.isDynamic = false
         return node
     }
-
-    
     
     func drawPlayer(pose: Pose) {
         guard pose.confidence > 0.05 else {
@@ -133,12 +140,24 @@ class MainScene: SKScene {
         })
         
         jointSegments.forEach { (key: JointSegment, value: SKShapeNode) in
+            guard pose.joints[key.jointA]?.isValid ?? false, pose.joints[key.jointB]?.isValid ?? false else {
+                return
+            }
+            
             let jointA = playerParts[key.jointA]
             let jointB = playerParts[key.jointB]
-            var path = CGMutablePath()
+            
+            let path = CGMutablePath()
             path.move(to: jointA!.position )
             path.addLine(to: jointB!.position)
             value.path = path
+        }
+        
+        if pose.joints[.rightHip]?.isValid ?? false && pose.joints[.leftHip]?.isValid ?? false, let hip1 = playerParts[.leftHip]?.position, let hip2 = playerParts[.rightHip]?.position {
+            rocketTrail.position = hip1.midBetween(hip2)
+            rocketTrail.particleBirthRate = 30
+        } else {
+            rocketTrail.particleBirthRate = 0
         }
     }
 }
