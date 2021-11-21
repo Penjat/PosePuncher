@@ -44,7 +44,8 @@ class MainScene: SKScene {
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         let spaceBackground = SKEmitterNode(fileNamed: "SpaceBackground")
-        spaceBackground?.position = CGPoint(x: scene?.size.width ?? 700, y: 0.0)
+        spaceBackground?.position = CGPoint(x: (scene?.size.width ?? 700)/2, y: 0.0)
+        spaceBackground?.particlePositionRange = CGVector(dx: scene?.size.width ?? 100, dy: 1)
         spaceBackground?.advanceSimulationTime(9.0)
         scene?.addChild(spaceBackground!)
         playerParts.values.forEach { self.scene?.addChild($0)}

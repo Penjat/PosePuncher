@@ -11,7 +11,6 @@ struct ExternalDisplayView: View {
                 .ignoresSafeArea()
 //            CameraView(session: viewModel.videoService.videoCapture.captureSession).opacity(0.2).aspectRatio( contentMode: .fit)
         }.onAppear {
-            print("number of screens = \(UIScreen.screens.count)")
             viewModel.setUp(size: size)
         }
     }
