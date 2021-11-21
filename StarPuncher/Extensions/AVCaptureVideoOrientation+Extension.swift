@@ -17,3 +17,10 @@ extension AVCaptureVideoOrientation {
         }
     }
 }
+
+extension CGPoint {
+  func midBetween(_ other: CGPoint) -> CGPoint {
+    return CGPoint(x: (self.x + other.x) / 2.0,
+                   y: (self.y + other.y) / 2.0)
+  }
+}
