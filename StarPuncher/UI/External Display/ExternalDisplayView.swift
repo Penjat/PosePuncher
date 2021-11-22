@@ -11,7 +11,7 @@ struct ExternalDisplayView: View {
                 .rotationEffect(Angle(degrees: 180))
                 .ignoresSafeArea()
         }.onAppear {
-            viewModel.setUp(size: size)
+            viewModel.setUpScene(size: size)
         }
     }
 }
