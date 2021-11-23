@@ -5,7 +5,8 @@ struct StarPuncherApp: App {
     @UIApplicationDelegateAdaptor var delegate: StarAppDelegate 
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(delegate.viewModel)
+            ContentView()
+                .environmentObject(delegate.viewModel)
         }
     }
 }

@@ -11,6 +11,7 @@ class StarAppDelegate: NSObject, UIApplicationDelegate {
         NotificationCenter.default.addObserver(forName: UIScreen.didConnectNotification,
                                                object: nil, queue: nil) { (notification) in
             guard let newScreen = notification.object as? UIScreen else {return}
+            print("new screen detected.")
             // Give the system time to update the connected scenes
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 // Find matching UIWindowScene
@@ -52,9 +53,11 @@ class StarAppDelegate: NSObject, UIApplicationDelegate {
                  // Remove the window and its contents.
                  let index = self.additionalWindows.index(of: window)
                  self.additionalWindows.remove(at: index!)
+                  print("removing window")
               }
            }
         }
+        
         print("Appdelegate loaded")
         return true
     }
