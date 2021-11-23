@@ -36,7 +36,7 @@ class GameViewModel: ObservableObject {
         scene.backgroundColor = .black
         
         $pose.sink { pose in
-            self.scene.drawPlayer(pose: pose)
+            self.scene.player.drawPlayer(pose: pose, scene: self.scene)
         }.store(in: &bag)
     }
 }

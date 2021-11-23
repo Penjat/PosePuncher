@@ -18,10 +18,10 @@
 		0B29DCB027495389008730B0 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCAF27495389008730B0 /* PreviewView.swift */; };
 		0B29DCB627498A2E008730B0 /* StarShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B208DCB274346C00090B3FE /* StarShape.swift */; };
 		0B29DCB9274AB3BD008730B0 /* StarAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCB8274AB3BD008730B0 /* StarAppDelegate.swift */; };
-		0B29DCBB274AB884008730B0 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCBA274AB884008730B0 /* TestViewController.swift */; };
 		0B29DCBD274AC9FA008730B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCBC274AC9FA008730B0 /* SceneDelegate.swift */; };
 		0B29DCC0274AEC56008730B0 /* ExternalDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCBF274AEC56008730B0 /* ExternalDisplayView.swift */; };
 		0B29DCC3274AF268008730B0 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCC2274AF268008730B0 /* TitleView.swift */; };
+		0B2C7B81274C64E200D8706F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2C7B80274C64E200D8706F /* Player.swift */; };
 		0B7524A72745E180009604FD /* StarPuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A62745E180009604FD /* StarPuncherApp.swift */; };
 		0B7524A92745E180009604FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A82745E180009604FD /* ContentView.swift */; };
 		0B7524AB2745E182009604FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B7524AA2745E182009604FD /* Assets.xcassets */; };
@@ -75,11 +75,11 @@
 		0B29DCA527484868008730B0 /* MainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
 		0B29DCAF27495389008730B0 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		0B29DCB8274AB3BD008730B0 /* StarAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarAppDelegate.swift; sourceTree = "<group>"; };
-		0B29DCBA274AB884008730B0 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		0B29DCBC274AC9FA008730B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0B29DCBF274AEC56008730B0 /* ExternalDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayView.swift; sourceTree = "<group>"; };
 		0B29DCC2274AF268008730B0 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		0B2BDD172732127900E61B71 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
+		0B2C7B80274C64E200D8706F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0B7524A42745E180009604FD /* StarPuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarPuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B7524A62745E180009604FD /* StarPuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarPuncherApp.swift; sourceTree = "<group>"; };
 		0B7524A82745E180009604FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -153,8 +153,6 @@
 				0B29DCBE274AEC33008730B0 /* External Display */,
 				0B29DCAF27495389008730B0 /* PreviewView.swift */,
 				0B7524A82745E180009604FD /* ContentView.swift */,
-				0B29DCA527484868008730B0 /* MainScene.swift */,
-				0B29DCBA274AB884008730B0 /* TestViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -210,6 +208,15 @@
 			path = Title;
 			sourceTree = "<group>";
 		};
+		0B2C7B82274C6E3300D8706F /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				0B29DCA527484868008730B0 /* MainScene.swift */,
+				0B2C7B80274C64E200D8706F /* Player.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
 		0B7524A52745E180009604FD /* StarPuncher */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +225,7 @@
 				0B29DCB42749854D008730B0 /* Repo */,
 				0B29DCB327498532008730B0 /* Model */,
 				0B29DCB22749851F008730B0 /* UI */,
+				0B2C7B82274C6E3300D8706F /* Game */,
 				0B29DCB127498510008730B0 /* Effects */,
 				0B7524AA2745E182009604FD /* Assets.xcassets */,
 				0B7524AC2745E182009604FD /* Preview Content */,
@@ -431,7 +439,7 @@
 				0B7524A72745E180009604FD /* StarPuncherApp.swift in Sources */,
 				0B29DCAE2748ABA0008730B0 /* PoseViewModel.swift in Sources */,
 				0B7524B92745E196009604FD /* PoseBuilder+Single.swift in Sources */,
-				0B29DCBB274AB884008730B0 /* TestViewController.swift in Sources */,
+				0B2C7B81274C64E200D8706F /* Player.swift in Sources */,
 				0B7524B82745E196009604FD /* PoseBuilder+Multiple.swift in Sources */,
 				0B7524BC2745E196009604FD /* PoseBuilderConfiguration.swift in Sources */,
 				0B7524C52745EF26009604FD /* VideoCapture.swift in Sources */,
