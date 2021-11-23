@@ -22,6 +22,11 @@ class MainScene: SKScene {
         
         player.setUp(scene: self)
         
+        
+        run(starfallLoop)
+    }
+    
+    var starfallLoop: SKAction {
         let update = SKAction.run(
             {
                 let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 25, height: 25))) )
@@ -41,8 +46,7 @@ class MainScene: SKScene {
             })
         
         let seq = SKAction.sequence([SKAction.wait(forDuration: 2),update])
-        let createLoop = SKAction.repeatForever(seq)
-        run(createLoop)
+        return SKAction.repeatForever(seq)
     }
     
 }
