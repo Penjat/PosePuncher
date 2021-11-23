@@ -22,6 +22,7 @@
 		0B29DCC0274AEC56008730B0 /* ExternalDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCBF274AEC56008730B0 /* ExternalDisplayView.swift */; };
 		0B29DCC3274AF268008730B0 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCC2274AF268008730B0 /* TitleView.swift */; };
 		0B2C7B81274C64E200D8706F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2C7B80274C64E200D8706F /* Player.swift */; };
+		0B2C7B84274C804500D8706F /* RectPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2C7B83274C804500D8706F /* RectPlayer.swift */; };
 		0B7524A72745E180009604FD /* StarPuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A62745E180009604FD /* StarPuncherApp.swift */; };
 		0B7524A92745E180009604FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A82745E180009604FD /* ContentView.swift */; };
 		0B7524AB2745E182009604FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B7524AA2745E182009604FD /* Assets.xcassets */; };
@@ -80,6 +81,7 @@
 		0B29DCC2274AF268008730B0 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		0B2BDD172732127900E61B71 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		0B2C7B80274C64E200D8706F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		0B2C7B83274C804500D8706F /* RectPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectPlayer.swift; sourceTree = "<group>"; };
 		0B7524A42745E180009604FD /* StarPuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarPuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B7524A62745E180009604FD /* StarPuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarPuncherApp.swift; sourceTree = "<group>"; };
 		0B7524A82745E180009604FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			children = (
 				0B29DCA527484868008730B0 /* MainScene.swift */,
 				0B2C7B80274C64E200D8706F /* Player.swift */,
+				0B2C7B83274C804500D8706F /* RectPlayer.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 			files = (
 				0B7524CA2745F9BB009604FD /* VideoService.swift in Sources */,
 				0B7524C82745F8D7009604FD /* GameViewModel.swift in Sources */,
+				0B2C7B84274C804500D8706F /* RectPlayer.swift in Sources */,
 				0B7524BB2745E196009604FD /* Pose.swift in Sources */,
 				0B29DCC3274AF268008730B0 /* TitleView.swift in Sources */,
 				0B29DCB027495389008730B0 /* PreviewView.swift in Sources */,

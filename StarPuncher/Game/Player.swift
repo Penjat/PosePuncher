@@ -11,30 +11,6 @@ struct JointSegment: Hashable {
     let jointB: Joint.Name
 }
 
-class RectPlayer: Player {
-    var playerSize: CGSize {
-        CGSize(width: 200, height: 200)
-    }
-    
-    var playerBody: SKShapeNode?
-    
-    var rightHand: SKShapeNode?
-    var leftHand: SKShapeNode?
-    
-    func drawPlayer(pose: Pose, scene: SKScene) {
-        self.playerBody?.strokeColor = (pose.confidence > 0.5) ? UIColor.green : .red
-        
-    }
-    
-    func setUp(scene: SKScene) {
-        playerBody = SKShapeNode(rectOf: playerSize)
-        playerBody?.position = CGPoint(x: scene.size.width/2, y: scene.size.height/2)
-        scene.addChild(playerBody!)
-        
-        
-    }
-}
-
 class PersonPlayer: Player {
     var playerSize: CGSize {
         CGSize(width: 200, height: 200)
