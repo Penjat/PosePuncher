@@ -22,8 +22,7 @@ class MainScene: SKScene {
         
         player.setUp(scene: self)
         
-        
-        run(starfallLoop)
+        run(starcircleLoop)
     }
     
     var starfallLoop: SKAction {
@@ -49,6 +48,29 @@ class MainScene: SKScene {
         return SKAction.repeatForever(seq)
     }
     
+    var starcircleLoop: SKAction {
+        let update = SKAction.run(
+            {
+                let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 25, height: 25))) )
+                shape.position = CGPoint(x: CGFloat.random(in: 30..<(self.scene?.frame.maxX ?? 300)-30), y:-50)
+                shape.fillColor = .yellow
+                shape.physicsBody = SKPhysicsBody(circleOfRadius: 25)
+                shape.physicsBody?.isDynamic = true
+                shape.physicsBody?.affectedByGravity = false
+                shape.name = "ball"
+                shape.physicsBody!.contactTestBitMask = 1
+                let moveXAction = SKAction.moveTo(x: (self.scene?.size.width ?? 2)/2, duration: 10)
+                let moveYAction = SKAction.moveTo(y: (self.scene?.size.height ?? 2)/2, duration: 10)
+                let rotateAction =
+                SKAction.repeatForever(SKAction.rotate(byAngle: 3.1, duration: 2))
+                let action = SKAction.group([rotateAction, moveXAction, moveYAction])
+                shape.run(action)
+                self.addChild(shape)
+            })
+        
+        let seq = SKAction.sequence([SKAction.wait(forDuration: 2),update])
+        return SKAction.repeatForever(seq)
+    }
 }
     
     
