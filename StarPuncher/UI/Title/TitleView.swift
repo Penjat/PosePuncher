@@ -1,16 +1,17 @@
 import SwiftUI
 
 struct TitleView: View {
-    @EnvironmentObject var viewModel: GameViewModel
+    
     var body: some View {
-        ZStack {
-            CameraView(session: viewModel.videoService.videoCapture.captureSession)
-                .opacity(0.5).aspectRatio( contentMode: .fit)
-            
-            Text("\(viewModel.pose.confidence)")
-        }.onAppear {
-            print("title appeared")
-            viewModel.setUpCamera()
+        NavigationView {
+            VStack(spacing: 40) {
+                NavigationLink("play on device only") {
+                    SingleDeviceView()
+                }
+                NavigationLink("play on device and external screen") {
+                    DeviceWithExternalView()
+                }
+            }
         }
     }
 }

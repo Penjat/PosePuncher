@@ -22,6 +22,10 @@ class MainScene: SKScene {
         
         player.setUp(scene: self)
         
+        run(starcircleLoop)
+    }
+    
+    var starfallLoop: SKAction {
         let update = SKAction.run(
             {
                 let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 25, height: 25))) )
@@ -41,10 +45,35 @@ class MainScene: SKScene {
             })
         
         let seq = SKAction.sequence([SKAction.wait(forDuration: 2),update])
-        let createLoop = SKAction.repeatForever(seq)
-        run(createLoop)
+        return SKAction.repeatForever(seq)
     }
     
+    var starcircleLoop: SKAction {
+        let update = SKAction.run(
+            {
+                let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 25, height: 25))) )
+                let radius: CGFloat = 700
+                let theta = CGFloat.random(in: 0..<1) * CGFloat.pi * 2.0
+                shape.position = CGPoint(x: cos(theta)*radius, y:sin(theta)*radius)
+                
+                shape.fillColor = .yellow
+                shape.physicsBody = SKPhysicsBody(circleOfRadius: 25)
+                shape.physicsBody?.isDynamic = true
+                shape.physicsBody?.affectedByGravity = false
+                shape.name = "ball"
+                shape.physicsBody!.contactTestBitMask = 1
+                let moveXAction = SKAction.moveTo(x: (self.scene?.size.width ?? 2)/2, duration: 10)
+                let moveYAction = SKAction.moveTo(y: (self.scene?.size.height ?? 2)/2, duration: 10)
+                let rotateAction =
+                SKAction.repeatForever(SKAction.rotate(byAngle: 3.1, duration: 2))
+                let action = SKAction.group([rotateAction, moveXAction, moveYAction])
+                shape.run(action)
+                self.addChild(shape)
+            })
+        
+        let seq = SKAction.sequence([SKAction.wait(forDuration: 2),update])
+        return SKAction.repeatForever(seq)
+    }
 }
     
     
