@@ -52,7 +52,10 @@ class MainScene: SKScene {
         let update = SKAction.run(
             {
                 let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 25, height: 25))) )
-                shape.position = CGPoint(x: CGFloat.random(in: 30..<(self.scene?.frame.maxX ?? 300)-30), y:-50)
+                let radius: CGFloat = 700
+                let theta = CGFloat.random(in: 0..<1) * CGFloat.pi * 2.0
+                shape.position = CGPoint(x: cos(theta)*radius, y:sin(theta)*radius)
+                
                 shape.fillColor = .yellow
                 shape.physicsBody = SKPhysicsBody(circleOfRadius: 25)
                 shape.physicsBody?.isDynamic = true
