@@ -36,6 +36,7 @@ class RectPlayer: Player {
     var playerHeart: SKShapeNode = {
         let heart = SKShapeNode(circleOfRadius: 30)
         heart.fillColor = .white
+        heart.name = "heart"
         return heart
     }()
     

@@ -76,29 +76,33 @@ class MainScene: SKScene {
         return SKAction.repeatForever(seq)
     }
 }
-    
+
 extension MainScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
         
-        if nodeA.name == "ball" && nodeB.name == "fist"{
+        if let (ball, fist) = checkCollision("ball", "fist") {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
-            explosion?.position = nodeA.position
+            explosion?.position = ball.position
             scene?.addChild(explosion!)
-            nodeA.removeFromParent()
+            ball.removeFromParent()
             self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
             score += 1
             scoreLabel.text = "\(score)"
             
-        } else if nodeB.name == "ball" && nodeA.name == "fist" {
-            let explosion = SKEmitterNode(fileNamed: "Explosion")
-            explosion?.position = nodeB.position
-            scene?.addChild(explosion!)
-            nodeB.removeFromParent()
-            self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
-            score += 1
-            scoreLabel.text = "\(score)"
+        }
+        
+        func checkCollision(_ nameA: String, _ nameB: String) -> (SKNode, SKNode)? {
+            switch (nodeA.name, nodeB.name){
+            case (nameA, nameB):
+                return (nodeA, nodeB)
+            case (nameB, nameA):
+                return (nodeB, nodeA)
+            default:
+                return nil
+            }
         }
     }
 }
+
