@@ -51,12 +51,13 @@ class MainScene: SKScene {
     var starcircleLoop: SKAction {
         let update = SKAction.run(
             {
-                let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 25, height: 25))) )
-                let radius: CGFloat = 700
+                let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.6).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 25, height: 25))) )
+                let radius: CGFloat = 1200
                 let theta = CGFloat.random(in: 0..<1) * CGFloat.pi * 2.0
-                shape.position = CGPoint(x: cos(theta)*radius, y:sin(theta)*radius)
+                shape.position = CGPoint(x: cos(theta)*radius+(self.scene?.size.width ?? 2)/2, y:sin(theta)*radius+(self.scene?.size.height ?? 2)/2)
                 
                 shape.fillColor = .yellow
+                shape.lineWidth = 0
                 shape.physicsBody = SKPhysicsBody(circleOfRadius: 25)
                 shape.physicsBody?.isDynamic = true
                 shape.physicsBody?.affectedByGravity = false
@@ -76,8 +77,6 @@ class MainScene: SKScene {
     }
 }
     
-    
-
 extension MainScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         guard let nodeA = contact.bodyA.node else { return }
