@@ -13,6 +13,7 @@ class RectPlayer: Player {
     var fist: SKShapeNode {
         let fistSize = 16.0
         let node = SKShapeNode(circleOfRadius: fistSize)
+        node.lineWidth = 0
         node.fillColor = .red
         node.name = "fist"
         node.physicsBody = SKPhysicsBody(circleOfRadius: fistSize)
@@ -32,10 +33,17 @@ class RectPlayer: Player {
         })
     }
     
+    var playerHeart: SKShapeNode = {
+        let heart = SKShapeNode(circleOfRadius: 30)
+        heart.fillColor = .white
+        return heart
+    }()
+    
     func setUp(scene: SKScene) {
         playerBody = SKShapeNode(rectOf: playerSize)
         playerBody?.position = CGPoint(x: scene.size.width/2, y: scene.size.height/2)
         scene.addChild(playerBody!)
+        playerBody?.addChild(playerHeart)
         
         playerParts.values.forEach { playerBody?.addChild($0)}
     }
