@@ -93,6 +93,14 @@ extension MainScene: SKPhysicsContactDelegate {
             
         }
         
+        if let (heart, ball) = checkCollision("heart", "ball") {
+            let explosion = SKEmitterNode(fileNamed: "Explosion")
+            explosion?.position = ball.position
+            scene?.addChild(explosion!)
+            ball.removeFromParent()
+            self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
+        }
+        
         func checkCollision(_ nameA: String, _ nameB: String) -> (SKNode, SKNode)? {
             switch (nodeA.name, nodeB.name){
             case (nameA, nameB):

@@ -34,7 +34,12 @@ class RectPlayer: Player {
     }
     
     var playerHeart: SKShapeNode = {
-        let heart = SKShapeNode(circleOfRadius: 30)
+        let heartSize: CGFloat = 30.0
+        let heart = SKShapeNode(circleOfRadius: heartSize)
+        heart.physicsBody = SKPhysicsBody(circleOfRadius: heartSize)
+        heart.physicsBody?.contactTestBitMask = 1
+        heart.physicsBody?.affectedByGravity = false
+        heart.physicsBody?.isDynamic = false
         heart.fillColor = .white
         heart.name = "heart"
         return heart
