@@ -4,7 +4,7 @@ class RectPlayer: Player {
     var playerSize: CGSize {
         CGSize(width: 400, height: 400)
     }
-    
+    let playerStats = PlayerStats()
     var playerBody: SKShapeNode?
     
     lazy var playerParts: [Joint.Name: SKShapeNode] = [.leftWrist: fist,
