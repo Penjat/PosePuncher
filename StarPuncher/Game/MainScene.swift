@@ -91,7 +91,7 @@ extension MainScene: SKPhysicsContactDelegate {
             score += 1
         }
         
-        if let (heart, ball) = checkCollision("heart", "ball") {
+        if let (heart, ball) = checkCollision("heart", "ball") as? (SKShapeNode, SKShapeNode) {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
             player.playerStats.health -= 1
             explosion?.position = ball.position
