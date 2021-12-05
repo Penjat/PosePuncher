@@ -6,11 +6,7 @@ struct ExternalDisplayView: View {
     let size: CGSize
     
     var body: some View {
-        ZStack {
-            SpriteView(scene: viewModel.scene)
-                .rotationEffect(Angle(degrees: 180))
-                .ignoresSafeArea()
-        }.onAppear {
+        GameView().onAppear {
             viewModel.setUpScene(size: size)
         }
     }
