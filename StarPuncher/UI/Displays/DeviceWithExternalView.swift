@@ -9,7 +9,6 @@ struct DeviceWithExternalView: View {
             
             Text("\(viewModel.pose.confidence)")
         }.onAppear {
-            print("title appeared")
             viewModel.setUpCamera()
         }
     }
