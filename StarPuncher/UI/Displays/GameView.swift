@@ -11,8 +11,10 @@ struct GameView: View {
             VStack {
                 HStack {
                     Spacer()
+                    Text("\(viewModel.scene.score)").foregroundColor(.white)
+                    Spacer()
                     Text("\(healthText)").foregroundColor(.blue)
-                }
+                }.font(.title)
                 Spacer()
             }
         }
