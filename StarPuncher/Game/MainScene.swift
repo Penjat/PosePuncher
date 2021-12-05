@@ -1,7 +1,6 @@
 import SpriteKit
 import Combine
 
-
 class MainScene: SKScene {
     var score = 0
     let player: Player = RectPlayer()//PersonPlayer()
@@ -19,6 +18,7 @@ class MainScene: SKScene {
         player.setUp(scene: self)
         
         starLoop = starcircleLoop
+        run(starLoop!)
         
         player.playerStats.$health.sink { health in
             self.scene?.isPaused = (health <= 0)
