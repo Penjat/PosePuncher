@@ -4,7 +4,7 @@ class RectPlayer: Player {
     var playerSize: CGSize {
         CGSize(width: 400, height: 400)
     }
-    let playerStats = PlayerStats()
+    
     var playerBody: SKShapeNode?
     
     lazy var playerParts: [Joint.Name: SKShapeNode] = [.leftWrist: fist,
@@ -13,7 +13,6 @@ class RectPlayer: Player {
     var fist: SKShapeNode {
         let fistSize = 16.0
         let node = SKShapeNode(circleOfRadius: fistSize)
-        node.lineWidth = 0
         node.fillColor = .red
         node.name = "fist"
         node.physicsBody = SKPhysicsBody(circleOfRadius: fistSize)
@@ -33,23 +32,10 @@ class RectPlayer: Player {
         })
     }
     
-    var playerHeart: SKShapeNode = {
-        let heartSize: CGFloat = 30.0
-        let heart = SKShapeNode(circleOfRadius: heartSize)
-        heart.physicsBody = SKPhysicsBody(circleOfRadius: heartSize)
-        heart.physicsBody?.contactTestBitMask = 1
-        heart.physicsBody?.affectedByGravity = false
-        heart.physicsBody?.isDynamic = false
-        heart.fillColor = .white
-        heart.name = "heart"
-        return heart
-    }()
-    
     func setUp(scene: SKScene) {
         playerBody = SKShapeNode(rectOf: playerSize)
         playerBody?.position = CGPoint(x: scene.size.width/2, y: scene.size.height/2)
         scene.addChild(playerBody!)
-        playerBody?.addChild(playerHeart)
         
         playerParts.values.forEach { playerBody?.addChild($0)}
     }

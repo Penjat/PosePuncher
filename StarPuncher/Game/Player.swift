@@ -4,8 +4,6 @@ protocol Player {
     func drawPlayer(pose: Pose, scene: SKScene)
     func setUp(scene: SKScene)
     var playerSize: CGSize { get }
-    var playerStats: PlayerStats { get }
-    
 }
 
 struct JointSegment: Hashable {
@@ -13,13 +11,7 @@ struct JointSegment: Hashable {
     let jointB: Joint.Name
 }
 
-class PlayerStats: ObservableObject {
-    @Published var health = 3
-}
-
 class PersonPlayer: Player {
-    let playerStats = PlayerStats()
-
     var playerSize: CGSize {
         CGSize(width: 200, height: 200)
     }
