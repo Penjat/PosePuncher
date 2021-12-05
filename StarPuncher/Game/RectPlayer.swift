@@ -69,7 +69,7 @@ class RectPlayer: Player {
         
         playerParts.values.forEach { playerBody?.addChild($0)}
         
-        playerStats.$health.receive(on: RunLoop.main).scan(3) { $0 - $1 }.sink { changeInHealth in
+        playerStats.$health.receive(on: RunLoop.main).scan(playerStats.health) { $0 - $1 }.sink { changeInHealth in
             if changeInHealth < 0 {
                 self.flashHeart()
             }
