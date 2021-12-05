@@ -1,11 +1,12 @@
 import SpriteKit
-
+import Combine
 
 
 class MainScene: SKScene {
     var score = 0
     let scoreLabel = SKLabelNode(text: "0")
     let player: Player = RectPlayer()//PersonPlayer()
+    var bag = Set<AnyCancellable>()
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         let spaceBackground = SKEmitterNode(fileNamed: "SpaceBackground")
@@ -21,6 +22,10 @@ class MainScene: SKScene {
         addChild(scoreLabel)
         
         player.setUp(scene: self)
+        
+        player.playerStats.$health.sink { health in
+            print("players health is \(health)")
+        }.store(in: &bag)
         
         run(starcircleLoop)
     }
@@ -91,6 +96,15 @@ extension MainScene: SKPhysicsContactDelegate {
             score += 1
             scoreLabel.text = "\(score)"
             
+        }
+        
+        if let (heart, ball) = checkCollision("heart", "ball") {
+            let explosion = SKEmitterNode(fileNamed: "Explosion")
+            player.playerStats.health -= 1
+            explosion?.position = ball.position
+            scene?.addChild(explosion!)
+            ball.removeFromParent()
+            self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
         }
         
         func checkCollision(_ nameA: String, _ nameB: String) -> (SKNode, SKNode)? {
