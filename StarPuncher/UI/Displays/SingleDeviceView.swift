@@ -5,6 +5,7 @@ struct SingleDeviceView: View {
     @EnvironmentObject var viewModel: GameViewModel
     var body: some View {
         GameView().onAppear {
+            viewModel.setUpCamera()
             viewModel.setUpScene(size: UIScreen.main.bounds.size)
         }
     }

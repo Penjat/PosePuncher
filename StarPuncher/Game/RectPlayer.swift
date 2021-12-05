@@ -1,6 +1,8 @@
 import SpriteKit
+import Combine
 
 class RectPlayer: Player {
+    var bag = Set<AnyCancellable>()
     var playerSize: CGSize {
         CGSize(width: 400, height: 400)
     }
@@ -9,6 +11,20 @@ class RectPlayer: Player {
     
     lazy var playerParts: [Joint.Name: SKShapeNode] = [.leftWrist: fist,
                                                        .rightWrist: fist]
+    
+    func flashHeart() {
+        let repeatTime: CGFloat = 0.1
+        let repeats = 6
+        let flash = SKAction.sequence([
+            SKAction.run { self.playerHeart.fillColor = .systemPink},
+            SKAction.wait(forDuration: repeatTime),
+            SKAction.run { self.playerHeart.fillColor = .white},
+            SKAction.wait(forDuration: repeatTime)])
+        let repeatAction = SKAction.repeat(flash, count: repeats)
+        
+        
+        playerHeart.run(repeatAction)
+    }
     
     var fist: SKShapeNode {
         let fistSize = 16.0
@@ -34,7 +50,12 @@ class RectPlayer: Player {
     }
     
     var playerHeart: SKShapeNode = {
-        let heart = SKShapeNode(circleOfRadius: 30)
+        let heartSize: CGFloat = 30
+        let heart = SKShapeNode(circleOfRadius: heartSize)
+        heart.physicsBody = SKPhysicsBody(circleOfRadius: heartSize)
+        heart.physicsBody?.contactTestBitMask = 1
+        heart.physicsBody?.affectedByGravity = false
+        heart.physicsBody?.isDynamic = false
         heart.fillColor = .white
         heart.name = "heart"
         return heart
@@ -47,5 +68,11 @@ class RectPlayer: Player {
         playerBody?.addChild(playerHeart)
         
         playerParts.values.forEach { playerBody?.addChild($0)}
+        
+        playerStats.$health.receive(on: RunLoop.main).scan(playerStats.health) { $0 - $1 }.sink { changeInHealth in
+            if changeInHealth < 0 {
+                self.flashHeart()
+            }
+        }.store(in: &bag)
     }
 }
