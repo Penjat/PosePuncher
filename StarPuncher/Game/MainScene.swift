@@ -2,11 +2,11 @@ import SpriteKit
 import Combine
 
 class MainScene: SKScene {
+    let starLoopKey = "STAR-LOOP-KEY"
     var score = 0
     let player: Player = RectPlayer()//PersonPlayer()
     var bag = Set<AnyCancellable>()
     let spaceBackground = SKEmitterNode(fileNamed: "SpaceBackground")
-    var starLoop: SKAction?
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -17,11 +17,13 @@ class MainScene: SKScene {
         
         player.setUp(scene: self)
         
-        starLoop = starcircleLoop
-        run(starLoop!)
+        run(starcircleLoop, withKey: starLoopKey)
         
         player.playerStats.$health.sink { health in
-            self.scene?.isPaused = (health <= 0)
+//            self.scene?.isPaused = (health <= 0)
+            if health <= 0 {
+                self.removeAction(forKey: self.starLoopKey)
+            }
         }.store(in: &bag)
     }
     
