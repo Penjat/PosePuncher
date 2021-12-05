@@ -16,7 +16,7 @@ struct GameView: View {
                     Text("\(healthText)").foregroundColor(.blue)
                 }
                 Spacer()
-            }.font(.largeTitle)
+            }.font(.title)
         }.navigationBarHidden(true)
     }
     
