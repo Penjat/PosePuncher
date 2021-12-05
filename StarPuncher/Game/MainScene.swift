@@ -4,7 +4,6 @@ import Combine
 
 class MainScene: SKScene {
     var score = 0
-    let scoreLabel = SKLabelNode(text: "0")
     let player: Player = RectPlayer()//PersonPlayer()
     var bag = Set<AnyCancellable>()
     override func didMove(to view: SKView) {
@@ -15,20 +14,7 @@ class MainScene: SKScene {
         spaceBackground?.advanceSimulationTime(9.0)
         scene?.addChild(spaceBackground!)
         
-        scoreLabel.fontSize = 65
-        scoreLabel.fontColor = SKColor.green
-        scoreLabel.position = CGPoint(x: 80, y: 80)
-        scoreLabel.zRotation = 3.14159
-        addChild(scoreLabel)
-        
         player.setUp(scene: self)
-        
-        player.playerStats.$health.sink { health in
-            print("players health is \(health)")
-        }.store(in: &bag)
-        
-        
-        
         run(starcircleLoop)
     }
     
@@ -96,7 +82,6 @@ extension MainScene: SKPhysicsContactDelegate {
             ball.removeFromParent()
             self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
             score += 1
-            scoreLabel.text = "\(score)"
         }
         
         if let (heart, ball) = checkCollision("heart", "ball") {

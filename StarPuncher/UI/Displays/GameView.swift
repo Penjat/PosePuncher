@@ -9,11 +9,25 @@ struct GameView: View {
                 .rotationEffect(Angle(degrees: 180))
                 .ignoresSafeArea()
             VStack {
-                Text("\(viewModel.scene.player.playerStats.health)").foregroundColor(.blue)
+                HStack {
+                    Spacer()
+                    Text("\(healthText)").foregroundColor(.blue)
+                }
+                Spacer()
             }
-        }.onAppear {
+        }
+        .navigationBarHidden(true)
+        .onAppear {
             viewModel.setUpCamera()
         }
+    }
+    
+    var healthText: String {
+        let health = viewModel.scene.player.playerStats.health
+        guard health > 0 else {
+            return "game over"
+        }
+        return String((0..<health).map { _ in "♥︎" })
     }
 }
 
