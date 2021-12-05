@@ -27,6 +27,8 @@ class MainScene: SKScene {
             print("players health is \(health)")
         }.store(in: &bag)
         
+        
+        
         run(starcircleLoop)
     }
     
@@ -95,7 +97,6 @@ extension MainScene: SKPhysicsContactDelegate {
             self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
             score += 1
             scoreLabel.text = "\(score)"
-            
         }
         
         if let (heart, ball) = checkCollision("heart", "ball") {
