@@ -7,6 +7,7 @@ class MainScene: SKScene {
     let player: Player = RectPlayer()//PersonPlayer()
     var bag = Set<AnyCancellable>()
     let spaceBackground = SKEmitterNode(fileNamed: "SpaceBackground")
+    let textTyper = TextInputPresenter()
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -16,8 +17,8 @@ class MainScene: SKScene {
         scene?.addChild(spaceBackground!)
         
         player.setUp(scene: self)
-        
-        run(starcircleLoop, withKey: starLoopKey)
+        scene?.addChild(textTyper.node)
+//        run(starcircleLoop, withKey: starLoopKey)
         
         player.playerStats.$health.sink { health in
 //            self.scene?.isPaused = (health <= 0)

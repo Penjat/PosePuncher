@@ -147,4 +147,3 @@ class PersonPlayer: Player {
         }
     }
 }
-

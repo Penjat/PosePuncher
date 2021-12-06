@@ -45,6 +45,7 @@
 		0B7524C62745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524C42745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift */; };
 		0B7524C82745F8D7009604FD /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524C72745F8D7009604FD /* GameViewModel.swift */; };
 		0B7524CA2745F9BB009604FD /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524C92745F9BB009604FD /* VideoService.swift */; };
+		0B812942275EB2D500F9001F /* TextInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B812941275EB2D500F9001F /* TextInputPresenter.swift */; };
 		0B875CA5272DB987002C6887 /* PosePuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CA4272DB987002C6887 /* PosePuncherApp.swift */; };
 		0B875CA7272DB987002C6887 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CA6272DB987002C6887 /* ContentView.swift */; };
 		0B875CA9272DB988002C6887 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B875CA8272DB988002C6887 /* Assets.xcassets */; };
@@ -95,6 +96,7 @@
 		0B7524C42745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoOrientation+Extension.swift"; sourceTree = "<group>"; };
 		0B7524C72745F8D7009604FD /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		0B7524C92745F9BB009604FD /* VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
+		0B812941275EB2D500F9001F /* TextInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputPresenter.swift; sourceTree = "<group>"; };
 		0B875CA1272DB987002C6887 /* PosePuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosePuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B875CA4272DB987002C6887 /* PosePuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosePuncherApp.swift; sourceTree = "<group>"; };
 		0B875CA6272DB987002C6887 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				0B29DCA527484868008730B0 /* MainScene.swift */,
 				0B2C7B80274C64E200D8706F /* Player.swift */,
 				0B2C7B83274C804500D8706F /* RectPlayer.swift */,
+				0B812941275EB2D500F9001F /* TextInputPresenter.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 			files = (
 				0B7524CA2745F9BB009604FD /* VideoService.swift in Sources */,
 				0B7524C82745F8D7009604FD /* GameViewModel.swift in Sources */,
+				0B812942275EB2D500F9001F /* TextInputPresenter.swift in Sources */,
 				0B2C7B84274C804500D8706F /* RectPlayer.swift in Sources */,
 				0B7524BB2745E196009604FD /* Pose.swift in Sources */,
 				0B29DCC3274AF268008730B0 /* TitleView.swift in Sources */,
