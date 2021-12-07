@@ -54,7 +54,9 @@ class RectPlayer: Player {
         let heartSize: CGFloat = 30
         let heart = SKShapeNode(circleOfRadius: heartSize)
         heart.physicsBody = SKPhysicsBody(circleOfRadius: heartSize)
-        heart.physicsBody?.contactTestBitMask = 1
+        heart.physicsBody?.contactTestBitMask = 0x00000010
+        heart.physicsBody?.categoryBitMask = 0x00000100
+        heart.physicsBody?.collisionBitMask = 0x00000010
         heart.physicsBody?.affectedByGravity = false
         heart.physicsBody?.isDynamic = false
         heart.fillColor = .white

@@ -9,6 +9,8 @@ class MainScene: SKScene, ObservableObject {
     let spaceBackground = SKEmitterNode(fileNamed: "SpaceBackground")
     let textTyper = TextInputPresenter()
     let label = SKLabelNode()
+    
+    let nodeProvider = NodeProvider()
     @Published var typedText = ""
     
     override func didMove(to view: SKView) {
@@ -18,19 +20,19 @@ class MainScene: SKScene, ObservableObject {
         spaceBackground?.advanceSimulationTime(9.0)
         
         player.setUp(scene: self)
-        scene?.addChild(textTyper.node)
-        textTyper.node.position = CGPoint(x: (scene?.size.width ?? 0.0)/2.0, y: (scene?.size.height ?? 0.0)/2.0)
         
-//        run(starcircleLoop, withKey: starLoopKey)
+//        scene?.addChild(textTyper.node)
+//        textTyper.node.position = CGPoint(x: (scene?.size.width ?? 0.0)/2.0, y: (scene?.size.height ?? 0.0)/2.0)
+//        scene?.addChild(label)
+//        label.zRotation = CGFloat.pi
+//        label.position = CGPoint(x: (scene?.size.width ?? 0)/2, y: 200.0)
+//        $typedText.sink { newText in
+//            self.label.text = newText
+//        }.store(in: &bag)
+        
+        run(starfallLoop, withKey: starLoopKey)
         
         scene?.addChild(spaceBackground!)
-        
-        scene?.addChild(label)
-        label.zRotation = CGFloat.pi
-        label.position = CGPoint(x: (scene?.size.width ?? 0)/2, y: 200.0)
-        $typedText.sink { newText in
-            self.label.text = newText
-        }.store(in: &bag)
         
         player.playerStats.$health.sink { health in
 //            self.scene?.isPaused = (health <= 0)
@@ -43,23 +45,10 @@ class MainScene: SKScene, ObservableObject {
     var starfallLoop: SKAction {
         let update = SKAction.run(
             {
-                let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 25, height: 25))) )
-                shape.position = CGPoint(x: CGFloat.random(in: 30..<(self.scene?.frame.maxX ?? 300)-30), y:-50)
-                shape.fillColor = .yellow
-                shape.physicsBody = SKPhysicsBody(circleOfRadius: 25)
-                shape.physicsBody?.isDynamic = true
-                shape.physicsBody?.affectedByGravity = false
-                shape.name = "ball"
-                shape.physicsBody!.contactTestBitMask = 1
-                let moveAction = SKAction.moveTo(y: (self.scene?.frame.maxY ?? 300) + 50, duration: 10.0)
-                let rotateAction =
-                SKAction.repeatForever(SKAction.rotate(byAngle: 3.1, duration: 2))
-                let action = SKAction.group([rotateAction,moveAction])
-                shape.run(action)
-                self.addChild(shape)
+                self.nodeProvider.addRandomStars(to: self)
             })
         
-        let seq = SKAction.sequence([SKAction.wait(forDuration: 2),update])
+        let seq = SKAction.sequence([SKAction.wait(forDuration: 1.2),update])
         return SKAction.repeatForever(seq)
     }
     
@@ -96,7 +85,7 @@ extension MainScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
-        
+        print("collision \(nodeA.name) \(nodeB.name)")
         if let (ball, fist) = checkCollision("ball", "fist") {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
             explosion?.position = ball.position
@@ -106,7 +95,7 @@ extension MainScene: SKPhysicsContactDelegate {
             score += 1
         }
         
-        if let (heart, ball) = checkCollision("heart", "ball") as? (SKShapeNode, SKShapeNode) {
+        if let (heart, ball) = checkCollision("heart", "ball") as? (SKShapeNode, SKNode) {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
             player.playerStats.health -= 1
             explosion?.position = ball.position
@@ -134,4 +123,3 @@ extension MainScene: SKPhysicsContactDelegate {
         }
     }
 }
-
