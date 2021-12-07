@@ -1,27 +1,42 @@
 import SpriteKit
 import Combine
 
-class MainScene: SKScene {
+class MainScene: SKScene, ObservableObject {
+    let starLoopKey = "STAR-LOOP-KEY"
     var score = 0
     let player: Player = RectPlayer()//PersonPlayer()
     var bag = Set<AnyCancellable>()
     let spaceBackground = SKEmitterNode(fileNamed: "SpaceBackground")
-    var starLoop: SKAction?
+    let textTyper = TextInputPresenter()
+    let label = SKLabelNode()
+    @Published var typedText = ""
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         spaceBackground?.position = CGPoint(x: (scene?.size.width ?? 700)/2, y: 0.0)
         spaceBackground?.particlePositionRange = CGVector(dx: scene?.size.width ?? 100, dy: 1)
         spaceBackground?.advanceSimulationTime(9.0)
-        scene?.addChild(spaceBackground!)
         
         player.setUp(scene: self)
+        scene?.addChild(textTyper.node)
+        textTyper.node.position = CGPoint(x: (scene?.size.width ?? 0.0)/2.0, y: (scene?.size.height ?? 0.0)/2.0)
         
-        starLoop = starcircleLoop
-        run(starLoop!)
+//        run(starcircleLoop, withKey: starLoopKey)
+        
+        scene?.addChild(spaceBackground!)
+        
+        scene?.addChild(label)
+        label.zRotation = CGFloat.pi
+        label.position = CGPoint(x: (scene?.size.width ?? 0)/2, y: 200.0)
+        $typedText.sink { newText in
+            self.label.text = newText
+        }.store(in: &bag)
         
         player.playerStats.$health.sink { health in
-            self.scene?.isPaused = (health <= 0)
+//            self.scene?.isPaused = (health <= 0)
+            if health <= 0 {
+                self.removeAction(forKey: self.starLoopKey)
+            }
         }.store(in: &bag)
     }
     
@@ -98,6 +113,13 @@ extension MainScene: SKPhysicsContactDelegate {
             scene?.addChild(explosion!)
             ball.removeFromParent()
             self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
+        }
+        
+        if let (letter, fist) = checkCollision("letterNode", "fist") as? (SKShapeNode, SKShapeNode) {
+           print("contacted letter \(letter.userData)")
+            if let char = letter.userData?["letter"] as? String {
+                typedText += char
+            }
         }
         
         func checkCollision(_ nameA: String, _ nameB: String) -> (SKNode, SKNode)? {

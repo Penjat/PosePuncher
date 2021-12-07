@@ -33,7 +33,8 @@ class RectPlayer: Player {
         node.fillColor = .red
         node.name = "fist"
         node.physicsBody = SKPhysicsBody(circleOfRadius: fistSize)
-        node.physicsBody?.contactTestBitMask = 1
+        node.physicsBody?.categoryBitMask = 0x00000001
+        node.physicsBody?.contactTestBitMask = 0x00000001
         node.physicsBody?.affectedByGravity = false
         node.physicsBody?.isDynamic = false
         return node
