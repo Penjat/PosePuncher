@@ -106,6 +106,10 @@ extension MainScene: SKPhysicsContactDelegate {
             self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
         }
         
+        if let (letter, fist) = checkCollision("letterNode", "fist") as? (SKShapeNode, SKShapeNode) {
+           print("contacted letter \(letter.userData)")
+        }
+        
         func checkCollision(_ nameA: String, _ nameB: String) -> (SKNode, SKNode)? {
             switch (nodeA.name, nodeB.name){
             case (nameA, nameB):
