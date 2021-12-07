@@ -85,7 +85,7 @@ extension MainScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
-        
+        print("collision \(nodeA.name) \(nodeB.name)")
         if let (ball, fist) = checkCollision("ball", "fist") {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
             explosion?.position = ball.position
@@ -95,7 +95,7 @@ extension MainScene: SKPhysicsContactDelegate {
             score += 1
         }
         
-        if let (heart, ball) = checkCollision("heart", "ball") as? (SKShapeNode, SKShapeNode) {
+        if let (heart, ball) = checkCollision("heart", "ball") as? (SKShapeNode, SKNode) {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
             player.playerStats.health -= 1
             explosion?.position = ball.position
