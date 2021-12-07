@@ -20,7 +20,8 @@ class NodeProvider {
     }
     
     func randomTopPos(_ scene: SKScene) -> CGPoint {
-        CGPoint(x: CGFloat.random(in: 30..<(scene.frame.maxX - 30)), y:-50)
+        let x = CGFloat.random(in: 1..<((scene.frame.maxX - 30)/30))
+        return CGPoint(x: x*30, y:-50)
     }
     
     var starNode: SKNode {
