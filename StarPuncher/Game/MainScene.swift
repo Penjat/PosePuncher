@@ -48,7 +48,7 @@ class MainScene: SKScene, ObservableObject {
                 self.nodeProvider.addRandomStars(to: self)
             })
         
-        let seq = SKAction.sequence([SKAction.wait(forDuration: 2),update])
+        let seq = SKAction.sequence([SKAction.wait(forDuration: 1.2),update])
         return SKAction.repeatForever(seq)
     }
     
