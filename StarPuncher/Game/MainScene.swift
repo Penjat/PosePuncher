@@ -14,11 +14,14 @@ class MainScene: SKScene {
         spaceBackground?.position = CGPoint(x: (scene?.size.width ?? 700)/2, y: 0.0)
         spaceBackground?.particlePositionRange = CGVector(dx: scene?.size.width ?? 100, dy: 1)
         spaceBackground?.advanceSimulationTime(9.0)
-        scene?.addChild(spaceBackground!)
+        
         
         player.setUp(scene: self)
         scene?.addChild(textTyper.node)
+        textTyper.node.position = CGPoint(x: (scene?.size.width ?? 0.0)/2.0, y: (scene?.size.height ?? 0.0)/2.0)
 //        run(starcircleLoop, withKey: starLoopKey)
+        
+        scene?.addChild(spaceBackground!)
         
         player.playerStats.$health.sink { health in
 //            self.scene?.isPaused = (health <= 0)
