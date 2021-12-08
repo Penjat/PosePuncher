@@ -47,8 +47,6 @@ class TextInputPresenter {
         letterNode.addChild(circle)
         circle.position = CGPoint(x: 0 ,y: 11)
         
-        print("\(letterNode.fontColor) \(circle.strokeColor)")
-        
         return letterNode
     }
 }
