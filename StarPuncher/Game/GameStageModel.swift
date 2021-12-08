@@ -1,6 +1,6 @@
 import Combine
 
-enum GameStage {
+enum GameStage: String {
     case menu
     case playing
     case gameover
