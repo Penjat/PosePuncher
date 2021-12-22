@@ -2,22 +2,29 @@ import SpriteKit
 
 class NodeProvider {
     let fallTime: CGFloat = 7
+    var counter = 0.0
+    let rate = Double.pi/4
     func addRandomStars(to scene: SKScene) {
-        fallingStar(at: randomTopPos(scene), scene: scene)
-        fallingStar(at: randomTopPos(scene), scene: scene)
-        fallingStar(at: randomTopPos(scene), scene: scene)
+        
+        fallingStar(at: wavScene(scene, index: counter), scene: scene)
+        counter += rate
     }
     
-    func fallingStar(at point: CGPoint, scene: SKScene){
+    func fallingStar(at point: CGPoint, scene: SKScene) {
         let node = starNode
         node.position = point
         let moveAction = SKAction.moveTo(y: scene.frame.maxY + 50, duration: fallTime)
         let rotateAction =
         SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat.pi, duration: 2))
         let action = SKAction.group([rotateAction,moveAction])
-        
+    
         node.run(action)
         scene.addChild(node)
+    }
+    
+    func wavScene(_ scene: SKScene, index: Double) -> CGPoint {
+        let x = (sin(index)+1)/2
+        return CGPoint(x: x*(scene.frame.maxX - 50) + 25, y:-50)
     }
     
     func randomTopPos(_ scene: SKScene) -> CGPoint {
