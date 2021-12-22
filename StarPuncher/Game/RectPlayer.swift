@@ -10,7 +10,8 @@ class RectPlayer: Player {
     var playerBody: SKShapeNode?
     
     lazy var playerParts: [Joint.Name: SKShapeNode] = [.leftWrist: fist,
-                                                       .rightWrist: fist]
+                                                       .rightWrist: fist,
+                                                       .nose: playerHeart]
     
     func flashHeart() {
         let repeatTime: CGFloat = 0.1
@@ -68,7 +69,7 @@ class RectPlayer: Player {
         playerBody = SKShapeNode(rectOf: playerSize)
         playerBody?.position = CGPoint(x: scene.size.width/2, y: scene.size.height/2)
         scene.addChild(playerBody!)
-        playerBody?.addChild(playerHeart)
+//        playerBody?.addChild(playerHeart)
         
         playerParts.values.forEach { playerBody?.addChild($0)}
         

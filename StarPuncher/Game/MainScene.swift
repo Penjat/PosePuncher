@@ -7,39 +7,53 @@ class MainScene: SKScene, ObservableObject {
     let player: Player = RectPlayer()//PersonPlayer()
     var bag = Set<AnyCancellable>()
     let spaceBackground = SKEmitterNode(fileNamed: "SpaceBackground")
-    let textTyper = TextInputPresenter()
+//    let textTyper = TextInputPresenter()  
     let label = SKLabelNode()
     
     let nodeProvider = NodeProvider()
     @Published var typedText = ""
     
     override func didMove(to view: SKView) {
+        setUpScene()
+    }
+    
+    func setUpScene() {
         physicsWorld.contactDelegate = self
-//        spaceBackground?.position = CGPoint(x: (scene?.size.width ?? 700)/2, y: 0.0)
-//        spaceBackground?.particlePositionRange = CGVector(dx: scene?.size.width ?? 100, dy: 1)
-//        spaceBackground?.advanceSimulationTime(9.0)
-        
         player.setUp(scene: self)
         
-        scene?.addChild(textTyper.node)
-        textTyper.node.position = CGPoint(x: (scene?.size.width ?? 0.0)/2.0, y: (scene?.size.height ?? 0.0)/2.0)
+        spaceBackground?.position = CGPoint(x: (scene?.size.width ?? 700)/2, y: 0.0)
+        spaceBackground?.particlePositionRange = CGVector(dx: scene?.size.width ?? 100, dy: 1)
+        spaceBackground?.advanceSimulationTime(9.0)
+        scene?.addChild(spaceBackground!)
+        
         scene?.addChild(label)
         label.zRotation = CGFloat.pi
         label.position = CGPoint(x: (scene?.size.width ?? 0)/2, y: 200.0)
-//        $typedText.sink { newText in
-//            self.label.text = newText
+        startGame()
+    }
+    
+    func startGame() {
+        run(starfallLoop, withKey: starLoopKey)
+        
+//        player.playerStats.$health.sink { health in
+//            if health <= 0 {
+//                self.gameOver()
+//            }
 //        }.store(in: &bag)
+    }
+    
+    func gameOver() {
+        self.scene?.isPaused = true
+        self.removeAction(forKey: self.starLoopKey)
+    }
+    
+    func enterHighScore() {
+        //        scene?.addChild(textTyper.node)
+        //        textTyper.node.position = CGPoint(x: (scene?.size.width ?? 0.0)/2.0, y: (scene?.size.height ?? 0.0)/2.0)
         
-//        run(starfallLoop, withKey: starLoopKey)
-        
-//        scene?.addChild(spaceBackground!)
-        
-        player.playerStats.$health.sink { health in
-//            self.scene?.isPaused = (health <= 0)
-            if health <= 0 {
-                self.removeAction(forKey: self.starLoopKey)
-            }
-        }.store(in: &bag)
+        //        $typedText.sink { newText in
+        //            self.label.text = newText
+        //        }.store(in: &bag)
     }
     
     var starfallLoop: SKAction {
@@ -48,7 +62,7 @@ class MainScene: SKScene, ObservableObject {
                 self.nodeProvider.addRandomStars(to: self)
             })
         
-        let seq = SKAction.sequence([SKAction.wait(forDuration: 1.2),update])
+        let seq = SKAction.sequence([SKAction.wait(forDuration: 0.5),update])
         return SKAction.repeatForever(seq)
     }
     

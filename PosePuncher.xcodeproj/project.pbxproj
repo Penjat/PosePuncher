@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B12E5082773D89D004B7379 /* StarPuncherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12E5072773D89D004B7379 /* StarPuncherTests.swift */; };
 		0B208DCC274346C00090B3FE /* StarShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B208DCB274346C00090B3FE /* StarShape.swift */; };
 		0B295796274199E9009AEF47 /* RocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B295795274199E9009AEF47 /* RocketController.swift */; };
 		0B29DCA627484868008730B0 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCA527484868008730B0 /* MainScene.swift */; };
@@ -24,6 +25,7 @@
 		0B2C7B81274C64E200D8706F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2C7B80274C64E200D8706F /* Player.swift */; };
 		0B2C7B84274C804500D8706F /* RectPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2C7B83274C804500D8706F /* RectPlayer.swift */; };
 		0B53D4FE275C6E2C00A7304F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53D4FD275C6E2C00A7304F /* GameView.swift */; };
+		0B64EDC527738EEF0038EC2C /* WaveForms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B64EDC427738EEF0038EC2C /* WaveForms.swift */; };
 		0B7524A72745E180009604FD /* StarPuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A62745E180009604FD /* StarPuncherApp.swift */; };
 		0B7524A92745E180009604FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A82745E180009604FD /* ContentView.swift */; };
 		0B7524AB2745E182009604FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B7524AA2745E182009604FD /* Assets.xcassets */; };
@@ -47,6 +49,7 @@
 		0B7524CA2745F9BB009604FD /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524C92745F9BB009604FD /* VideoService.swift */; };
 		0B812942275EB2D500F9001F /* TextInputPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B812941275EB2D500F9001F /* TextInputPresenter.swift */; };
 		0B812944275FD16200F9001F /* NodeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B812943275FD16200F9001F /* NodeProvider.swift */; };
+		0B8129462761694D00F9001F /* GameStageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8129452761694C00F9001F /* GameStageModel.swift */; };
 		0B875CA5272DB987002C6887 /* PosePuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CA4272DB987002C6887 /* PosePuncherApp.swift */; };
 		0B875CA7272DB987002C6887 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B875CA6272DB987002C6887 /* ContentView.swift */; };
 		0B875CA9272DB988002C6887 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B875CA8272DB988002C6887 /* Assets.xcassets */; };
@@ -73,7 +76,19 @@
 		0BFDB5612755AE2900ABA339 /* SingleDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFDB5602755AE2900ABA339 /* SingleDeviceView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0B12E5092773D89D004B7379 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B875C99272DB987002C6887 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B7524A32745E180009604FD;
+			remoteInfo = StarPuncher;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0B12E5052773D89D004B7379 /* StarPuncherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarPuncherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B12E5072773D89D004B7379 /* StarPuncherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarPuncherTests.swift; sourceTree = "<group>"; };
 		0B208DCB274346C00090B3FE /* StarShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarShape.swift; sourceTree = "<group>"; };
 		0B208DCD27435B1A0090B3FE /* SpaceBackground.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpaceBackground.sks; sourceTree = "<group>"; };
 		0B295795274199E9009AEF47 /* RocketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketController.swift; sourceTree = "<group>"; };
@@ -88,6 +103,7 @@
 		0B2C7B80274C64E200D8706F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0B2C7B83274C804500D8706F /* RectPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectPlayer.swift; sourceTree = "<group>"; };
 		0B53D4FD275C6E2C00A7304F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		0B64EDC427738EEF0038EC2C /* WaveForms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveForms.swift; sourceTree = "<group>"; };
 		0B7524A42745E180009604FD /* StarPuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarPuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B7524A62745E180009604FD /* StarPuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarPuncherApp.swift; sourceTree = "<group>"; };
 		0B7524A82745E180009604FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +115,7 @@
 		0B7524C92745F9BB009604FD /* VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
 		0B812941275EB2D500F9001F /* TextInputPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputPresenter.swift; sourceTree = "<group>"; };
 		0B812943275FD16200F9001F /* NodeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeProvider.swift; sourceTree = "<group>"; };
+		0B8129452761694C00F9001F /* GameStageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStageModel.swift; sourceTree = "<group>"; };
 		0B875CA1272DB987002C6887 /* PosePuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PosePuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B875CA4272DB987002C6887 /* PosePuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosePuncherApp.swift; sourceTree = "<group>"; };
 		0B875CA6272DB987002C6887 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -130,6 +147,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0B12E5022773D89D004B7379 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0B7524A12745E180009604FD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -147,6 +171,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B12E5062773D89D004B7379 /* StarPuncherTests */ = {
+			isa = PBXGroup;
+			children = (
+				0B12E5072773D89D004B7379 /* StarPuncherTests.swift */,
+			);
+			path = StarPuncherTests;
+			sourceTree = "<group>";
+		};
 		0B29DCB127498510008730B0 /* Effects */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				0B7524C42745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift */,
+				0B64EDC427738EEF0038EC2C /* WaveForms.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -231,6 +264,7 @@
 				0B2C7B80274C64E200D8706F /* Player.swift */,
 				0B2C7B83274C804500D8706F /* RectPlayer.swift */,
 				0B812941275EB2D500F9001F /* TextInputPresenter.swift */,
+				0B8129452761694C00F9001F /* GameStageModel.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -264,6 +298,7 @@
 			children = (
 				0B875CA3272DB987002C6887 /* PosePuncher */,
 				0B7524A52745E180009604FD /* StarPuncher */,
+				0B12E5062773D89D004B7379 /* StarPuncherTests */,
 				0B875CA2272DB987002C6887 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -273,6 +308,7 @@
 			children = (
 				0B875CA1272DB987002C6887 /* PosePuncher.app */,
 				0B7524A42745E180009604FD /* StarPuncher.app */,
+				0B12E5052773D89D004B7379 /* StarPuncherTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -345,6 +381,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0B12E5042773D89D004B7379 /* StarPuncherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B12E50D2773D89D004B7379 /* Build configuration list for PBXNativeTarget "StarPuncherTests" */;
+			buildPhases = (
+				0B12E5012773D89D004B7379 /* Sources */,
+				0B12E5022773D89D004B7379 /* Frameworks */,
+				0B12E5032773D89D004B7379 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0B12E50A2773D89D004B7379 /* PBXTargetDependency */,
+			);
+			name = StarPuncherTests;
+			productName = StarPuncherTests;
+			productReference = 0B12E5052773D89D004B7379 /* StarPuncherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		0B7524A32745E180009604FD /* StarPuncher */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0B7524B12745E182009604FD /* Build configuration list for PBXNativeTarget "StarPuncher" */;
@@ -389,6 +443,10 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					0B12E5042773D89D004B7379 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 0B7524A32745E180009604FD;
+					};
 					0B7524A32745E180009604FD = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -412,11 +470,19 @@
 			targets = (
 				0B875CA0272DB987002C6887 /* PosePuncher */,
 				0B7524A32745E180009604FD /* StarPuncher */,
+				0B12E5042773D89D004B7379 /* StarPuncherTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0B12E5032773D89D004B7379 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0B7524A22745E180009604FD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -442,10 +508,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0B12E5012773D89D004B7379 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B12E5082773D89D004B7379 /* StarPuncherTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0B7524A02745E180009604FD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B64EDC527738EEF0038EC2C /* WaveForms.swift in Sources */,
 				0B7524CA2745F9BB009604FD /* VideoService.swift in Sources */,
 				0B7524C82745F8D7009604FD /* GameViewModel.swift in Sources */,
 				0B812942275EB2D500F9001F /* TextInputPresenter.swift in Sources */,
@@ -466,6 +541,7 @@
 				0B7524C52745EF26009604FD /* VideoCapture.swift in Sources */,
 				0B7524BE2745E196009604FD /* PoseNetOutput.swift in Sources */,
 				0B29DCB9274AB3BD008730B0 /* StarAppDelegate.swift in Sources */,
+				0B8129462761694D00F9001F /* GameStageModel.swift in Sources */,
 				0B7524B52745E193009604FD /* CGPoint+Extension.swift in Sources */,
 				0B29DCA627484868008730B0 /* MainScene.swift in Sources */,
 				0B7524BD2745E196009604FD /* PoseNetInput.swift in Sources */,
@@ -514,7 +590,66 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		0B12E50A2773D89D004B7379 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0B7524A32745E180009604FD /* StarPuncher */;
+			targetProxy = 0B12E5092773D89D004B7379 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		0B12E50B2773D89D004B7379 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.StarPuncherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarPuncher.app/StarPuncher";
+			};
+			name = Debug;
+		};
+		0B12E50C2773D89D004B7379 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L688AU9RCV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Penjat.StarPuncherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarPuncher.app/StarPuncher";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		0B7524AF2745E182009604FD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -760,6 +895,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0B12E50D2773D89D004B7379 /* Build configuration list for PBXNativeTarget "StarPuncherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B12E50B2773D89D004B7379 /* Debug */,
+				0B12E50C2773D89D004B7379 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0B7524B12745E182009604FD /* Build configuration list for PBXNativeTarget "StarPuncher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

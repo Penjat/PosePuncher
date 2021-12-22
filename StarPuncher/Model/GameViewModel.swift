@@ -6,6 +6,7 @@ class GameViewModel: ObservableObject {
     private var poseNet: PoseNet!
     @Published var pose = Pose()
     let videoService = VideoService()
+    let stageModel = GameStageModel()
     let scene: MainScene
     var bag = Set<AnyCancellable>()
     private var poseBuilderConfiguration = PoseBuilderConfiguration()
