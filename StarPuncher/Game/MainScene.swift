@@ -7,7 +7,7 @@ class MainScene: SKScene, ObservableObject {
     let player: Player = RectPlayer()//PersonPlayer()
     var bag = Set<AnyCancellable>()
     let spaceBackground = SKEmitterNode(fileNamed: "SpaceBackground")
-//    let textTyper = TextInputPresenter()
+//    let textTyper = TextInputPresenter()  
     let label = SKLabelNode()
     
     let nodeProvider = NodeProvider()
@@ -19,30 +19,27 @@ class MainScene: SKScene, ObservableObject {
     
     func setUpScene() {
         physicsWorld.contactDelegate = self
+        player.setUp(scene: self)
+        
         spaceBackground?.position = CGPoint(x: (scene?.size.width ?? 700)/2, y: 0.0)
         spaceBackground?.particlePositionRange = CGVector(dx: scene?.size.width ?? 100, dy: 1)
         spaceBackground?.advanceSimulationTime(9.0)
-        
-        player.setUp(scene: self)
+        scene?.addChild(spaceBackground!)
         
         scene?.addChild(label)
         label.zRotation = CGFloat.pi
         label.position = CGPoint(x: (scene?.size.width ?? 0)/2, y: 200.0)
-
-        
-        run(starcircleLoop, withKey: starLoopKey)
-        
-        scene?.addChild(spaceBackground!)
+        startGame()
+    }
+    
+    func startGame() {
+        run(starfallLoop, withKey: starLoopKey)
         
         player.playerStats.$health.sink { health in
             if health <= 0 {
                 self.gameOver()
             }
         }.store(in: &bag)
-    }
-    
-    func startGame() {
-        
     }
     
     func gameOver() {
