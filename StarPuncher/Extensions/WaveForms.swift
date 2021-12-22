@@ -1,7 +1,7 @@
 import Foundation
 
 func triangleWave(_ input: Double) -> Double {
-    return abs((input + Double.pi/2).remainder(dividingBy:Double.pi*2)/Double.pi)-0.5
+    return (abs((input + Double.pi/2).remainder(dividingBy:Double.pi*2)/Double.pi)-0.5)*2
 }
 
 func squareWave(_ input: Double) -> Double  {

@@ -18,9 +18,7 @@ class NodeProvider: ObservableObject {
     }
     
     func addRandomStars(to scene: SKScene) {
-        if sin(Double(counter)*8) < 0.8 {
-            fallingStar(at: wavScene(scene, index: Double(counter)*rate), scene: scene)
-        }
+        fallingStar(at: wavScene(scene, index: Double(counter)*rate), scene: scene)
         counter += 1
     }
     
