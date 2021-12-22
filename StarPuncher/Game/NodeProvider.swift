@@ -1,13 +1,27 @@
 import SpriteKit
+import Combine
 
-class NodeProvider {
+class NodeProvider: ObservableObject {
     let fallTime: CGFloat = 7
-    var counter = 0.0
-    let rate = Double.pi/4
+    @Published var counter = 0
+    let rate = Double.pi/16
+    var wavForm = triangleWave
+    var bag = Set<AnyCancellable>()
+    
+    init() {
+        $counter.sink { value in
+            if value%16 == 0 {
+                print("change wave")
+                self.wavForm = self.randomWav
+            }
+        }.store(in: &bag)
+    }
+    
     func addRandomStars(to scene: SKScene) {
-        
-        fallingStar(at: wavScene(scene, index: counter), scene: scene)
-        counter += rate
+        if sin(Double(counter)*8) < 0.8 {
+            fallingStar(at: wavScene(scene, index: Double(counter)*rate), scene: scene)
+        }
+        counter += 1
     }
     
     func fallingStar(at point: CGPoint, scene: SKScene) {
@@ -23,13 +37,17 @@ class NodeProvider {
     }
     
     func wavScene(_ scene: SKScene, index: Double) -> CGPoint {
-        let x = (sin(index)+1)/2
+        let x = wavForm(index)
         return CGPoint(x: x*(scene.frame.maxX - 50) + 25, y:-50)
     }
     
     func randomTopPos(_ scene: SKScene) -> CGPoint {
         let x = CGFloat.random(in: 1..<((scene.frame.maxX - 50)/50))
         return CGPoint(x: x*50, y:-50)
+    }
+    
+    var randomWav: (Double) -> Double {
+        [sin, triangleWave, sawWave, squareWave, noise].randomElement() ?? sin
     }
     
     var starNode: SKNode {

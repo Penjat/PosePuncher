@@ -24,6 +24,7 @@
 		0B2C7B81274C64E200D8706F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2C7B80274C64E200D8706F /* Player.swift */; };
 		0B2C7B84274C804500D8706F /* RectPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2C7B83274C804500D8706F /* RectPlayer.swift */; };
 		0B53D4FE275C6E2C00A7304F /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B53D4FD275C6E2C00A7304F /* GameView.swift */; };
+		0B64EDC527738EEF0038EC2C /* WaveForms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B64EDC427738EEF0038EC2C /* WaveForms.swift */; };
 		0B7524A72745E180009604FD /* StarPuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A62745E180009604FD /* StarPuncherApp.swift */; };
 		0B7524A92745E180009604FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7524A82745E180009604FD /* ContentView.swift */; };
 		0B7524AB2745E182009604FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B7524AA2745E182009604FD /* Assets.xcassets */; };
@@ -89,6 +90,7 @@
 		0B2C7B80274C64E200D8706F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0B2C7B83274C804500D8706F /* RectPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectPlayer.swift; sourceTree = "<group>"; };
 		0B53D4FD275C6E2C00A7304F /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		0B64EDC427738EEF0038EC2C /* WaveForms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveForms.swift; sourceTree = "<group>"; };
 		0B7524A42745E180009604FD /* StarPuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarPuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B7524A62745E180009604FD /* StarPuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarPuncherApp.swift; sourceTree = "<group>"; };
 		0B7524A82745E180009604FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				0B7524C42745EF26009604FD /* AVCaptureVideoOrientation+Extension.swift */,
+				0B64EDC427738EEF0038EC2C /* WaveForms.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B64EDC527738EEF0038EC2C /* WaveForms.swift in Sources */,
 				0B7524CA2745F9BB009604FD /* VideoService.swift in Sources */,
 				0B7524C82745F8D7009604FD /* GameViewModel.swift in Sources */,
 				0B812942275EB2D500F9001F /* TextInputPresenter.swift in Sources */,

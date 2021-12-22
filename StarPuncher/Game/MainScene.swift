@@ -35,11 +35,11 @@ class MainScene: SKScene, ObservableObject {
     func startGame() {
         run(starfallLoop, withKey: starLoopKey)
         
-        player.playerStats.$health.sink { health in
-            if health <= 0 {
-                self.gameOver()
-            }
-        }.store(in: &bag)
+//        player.playerStats.$health.sink { health in
+//            if health <= 0 {
+//                self.gameOver()
+//            }
+//        }.store(in: &bag)
     }
     
     func gameOver() {
@@ -62,7 +62,7 @@ class MainScene: SKScene, ObservableObject {
                 self.nodeProvider.addRandomStars(to: self)
             })
         
-        let seq = SKAction.sequence([SKAction.wait(forDuration: 1.2),update])
+        let seq = SKAction.sequence([SKAction.wait(forDuration: 0.5),update])
         return SKAction.repeatForever(seq)
     }
     
