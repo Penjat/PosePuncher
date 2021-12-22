@@ -9,7 +9,7 @@ func squareWave(_ input: Double) -> Double  {
 }
 
 func sawWave(_ input: Double) -> Double {
-    return input.remainder(dividingBy: Double.pi*2)/(Double.pi*2)
+    return input.remainder(dividingBy: Double.pi*2)/(Double.pi*2)*2
 }
 
 func noise(_ input: Double) -> Double {
