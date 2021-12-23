@@ -2,24 +2,33 @@ import SpriteKit
 import Combine
 
 class NodeProvider: ObservableObject {
-    lazy var generators = [
-        NodeGenerator(wav: {(triangleWave($0)+1)/2 }),
-        NodeGenerator(wav: {1 - (triangleWave($0)+1)/2 }),
-    ]
+    lazy var generators = [NodeGenerator]()
     let changeWaveRate = 16
     let changeColorRate = 128.0
     let fallTime: CGFloat = 7
     @Published var counter = 0
     let rate = Double.pi/16
-    var wavForm = triangleWave
     var bag = Set<AnyCancellable>()
     
     init() {
-//        $counter.sink { value in
-//            if value%self.changeWaveRate == 0 {
-//                self.wavForm = { self.randomWav($0*Double.random(in: 0.3...5))/2 + self.randomWav($0*Double.random(in: 0.3...5))/4}
-//            }
-//        }.store(in: &bag)
+        $counter.sink { value in
+            if value%self.changeWaveRate == 0 {
+                print("changing wave")
+                self.generators = Bool.random() ? self.singleLine() : self.symetricalLines()
+            }
+        }.store(in: &bag)
+    }
+    
+    func singleLine() -> [NodeGenerator] {
+        let wav = randomWav
+        return [NodeGenerator(wav: {(wav($0)+1)/2 })]
+    }
+    
+    func symetricalLines() -> [NodeGenerator] {
+        let wav = [sin, triangleWave, sawWave].randomElement() ?? sin
+        return [
+            NodeGenerator(wav: {(wav($0)+1)/2 }),
+            NodeGenerator(wav: {1 - (wav($0)+1)/2 })]
     }
     
     func addRandomStars(to scene: SKScene) {
@@ -41,10 +50,6 @@ class NodeProvider: ObservableObject {
         scene.addChild(node)
     }
     
-    func wavScene(_ scene: SKScene, index: Double) -> CGPoint {
-        let x = wavForm(index)
-        return CGPoint(x: x*(scene.frame.maxX - 50) + 25, y:-50)
-    }
     
     func randomTopPos(_ scene: SKScene) -> CGPoint {
         let x = CGFloat.random(in: 1..<((scene.frame.maxX - 50)/50))
@@ -52,7 +57,7 @@ class NodeProvider: ObservableObject {
     }
     
     var randomWav: (Double) -> Double {
-        [sin, triangleWave, sawWave, {(squareWave($0*7)+0.25)/2 }, noise].randomElement() ?? sin
+        [sin, triangleWave, sawWave, {(squareWave($0) + 0.5)/2}, noise].randomElement() ?? sin
     }
     
     func starNode(_ theta: Double) -> SKNode {
