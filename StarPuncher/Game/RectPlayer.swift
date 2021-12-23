@@ -31,7 +31,7 @@ class RectPlayer: Player {
         let fistSize = 16.0
         let node = SKShapeNode(circleOfRadius: fistSize)
         node.lineWidth = 0
-        node.fillColor = .red
+        node.fillColor = .white
         node.name = "fist"
         node.physicsBody = SKPhysicsBody(circleOfRadius: fistSize)
         node.physicsBody?.categoryBitMask = 0x00000001
