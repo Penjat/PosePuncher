@@ -111,8 +111,6 @@ class MainScene: SKScene, ObservableObject {
         return button
     }
     
-    
-    
     func enterHighScore() {
         //        scene?.addChild(textTyper.node)
         //        textTyper.node.position = CGPoint(x: (scene?.size.width ?? 0.0)/2.0, y: (scene?.size.height ?? 0.0)/2.0)
@@ -120,6 +118,13 @@ class MainScene: SKScene, ObservableObject {
         //        $typedText.sink { newText in
         //            self.label.text = newText
         //        }.store(in: &bag)
+    }
+    
+    var fadeOutText: SKAction {
+        let grow = SKAction.scale(to: 4, duration: 1.0)
+        let fade = SKAction.fadeOut(withDuration: 1.0)
+        let group = SKAction.group([grow, fade])
+        return SKAction.sequence([group, SKAction.removeFromParent()])
     }
     
     var starfallLoop: SKAction {
@@ -210,12 +215,14 @@ extension MainScene: SKPhysicsContactDelegate {
         }
         
         if let (button, _) = checkCollision("NEW-GAME", "fist") {
-            button.removeFromParent()
+            button.run(fadeOutText)
+            button.physicsBody = nil
             startGame()
         }
         
         if let (button, _) = checkCollision("RETRY-BUTTON", "fist") {
-            button.removeFromParent()
+            button.run(fadeOutText)
+            button.physicsBody = nil
             startGame()
         }
         func checkCollision(_ nameA: String, _ nameB: String) -> (SKNode, SKNode)? {
