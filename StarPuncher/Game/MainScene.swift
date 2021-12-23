@@ -3,7 +3,7 @@ import Combine
 
 class MainScene: SKScene, ObservableObject {
     let starLoopKey = "STAR-LOOP-KEY"
-    let starSpeed = 8.0
+    let starSpeed = 7.0
     var score = 0
     let player: Player = RectPlayer()//PersonPlayer()
     var bag = Set<AnyCancellable>()
@@ -100,7 +100,7 @@ extension MainScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
-        print("collision \(nodeA.name) \(nodeB.name)")
+//        print("collision \(nodeA.name) \(nodeB.name)")
         if let (ball, fist) = checkCollision("ball", "fist")  as? (SKNode, SKShapeNode) {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
             explosion?.position = ball.position

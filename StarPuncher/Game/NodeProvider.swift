@@ -2,6 +2,10 @@ import SpriteKit
 import Combine
 
 class NodeProvider: ObservableObject {
+    lazy var generators = [
+        NodeGenerator(wav: {(triangleWave($0)+1)/2 }),
+        NodeGenerator(wav: {1 - (triangleWave($0)+1)/2 }),
+    ]
     let changeWaveRate = 16
     let changeColorRate = 128.0
     let fallTime: CGFloat = 7
@@ -11,18 +15,17 @@ class NodeProvider: ObservableObject {
     var bag = Set<AnyCancellable>()
     
     init() {
-        $counter.sink { value in
-            if value%self.changeWaveRate == 0 {
-                self.wavForm = self.randomWav
-            }
-        }.store(in: &bag)
+//        $counter.sink { value in
+//            if value%self.changeWaveRate == 0 {
+//                self.wavForm = { self.randomWav($0*Double.random(in: 0.3...5))/2 + self.randomWav($0*Double.random(in: 0.3...5))/4}
+//            }
+//        }.store(in: &bag)
     }
     
     func addRandomStars(to scene: SKScene) {
-        let point = wavScene(scene, index: Double(counter)*rate)
-        fallingStar(at: point, scene: scene)
-        
-        fallingStar(at: CGPoint(x: scene.frame.maxX - point.x, y: -50), scene: scene)
+        generators.forEach { generator in
+            fallingStar(at: CGPoint(x: generator.wav(Double(counter)*rate)*(scene.frame.maxX - 50)+25.0, y: -50.0), scene: scene)
+        }
         counter += 1
     }
     
