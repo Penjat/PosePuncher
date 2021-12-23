@@ -35,7 +35,7 @@ class MainScene: SKScene, ObservableObject {
     
     func startGame() {
         run(starfallLoop, withKey: starLoopKey)
-        
+        player.playerStats.health = 3
         player.playerStats.$health.sink { health in
             if health <= 0 {
                 self.gameOver()
@@ -45,8 +45,10 @@ class MainScene: SKScene, ObservableObject {
     
     func gameOver() {
         self.removeAction(forKey: self.starLoopKey)
-        
+        bag.removeAll()
         scene?.addChild(gameoverLabel)
+        
+        self.addChild(retryButton)
     }
     
     var gameoverLabel: SKNode {
@@ -59,6 +61,27 @@ class MainScene: SKScene, ObservableObject {
         let moveAction = SKAction.moveTo(y: (scene?.frame.maxY ?? 0), duration: starSpeed*2)
         button.run(moveAction)
         
+        button.physicsBody = SKPhysicsBody(rectangleOf: button.frame.size)
+        button.physicsBody!.contactTestBitMask = 0x00000101
+        button.physicsBody!.categoryBitMask = 0x00000010
+        button.physicsBody!.collisionBitMask = 0x00000101
+        button.physicsBody?.affectedByGravity = false
+        button.physicsBody?.isDynamic = true
+        
+        return button
+    }
+    
+    var retryButton: SKNode {
+        let button = SKLabelNode(text: "retry?")
+        button.fontName = "ArcadeClassic"
+        button.fontSize = 30
+        button.zRotation = Double.pi
+        
+        button.position = CGPoint(x: scene?.frame.midX ?? 0, y: -200)
+        let moveAction = SKAction.moveTo(y: (scene?.frame.midY ?? 0) - 50, duration: starSpeed*2)
+        button.run(moveAction)
+        
+        button.name = "RETRY-BUTTON"
         button.physicsBody = SKPhysicsBody(rectangleOf: button.frame.size)
         button.physicsBody!.contactTestBitMask = 0x00000101
         button.physicsBody!.categoryBitMask = 0x00000010
@@ -167,6 +190,10 @@ extension MainScene: SKPhysicsContactDelegate {
             }
         }
         
+        if let (button, _) = checkCollision("RETRY-BUTTON", "fist") {
+            button.removeFromParent()
+            startGame()
+        }
         func checkCollision(_ nameA: String, _ nameB: String) -> (SKNode, SKNode)? {
             switch (nodeA.name, nodeB.name){
             case (nameA, nameB):
