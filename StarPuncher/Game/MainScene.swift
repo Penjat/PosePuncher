@@ -99,7 +99,6 @@ extension MainScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
-//        print("collision \(nodeA.name) \(nodeB.name)")
         if let (ball, fist) = checkCollision("ball", "fist")  as? (SKNode, SKShapeNode) {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
             explosion?.position = ball.position
@@ -115,6 +114,9 @@ extension MainScene: SKPhysicsContactDelegate {
         }
         
         if let (heart, ball) = checkCollision("heart", "ball") {
+            guard player.playerStats.health > 0 else {
+                return
+            }
             let explosion = SKEmitterNode(fileNamed: "Explosion")
             explosion?.particleColorSequence = nil
             explosion?.particleColorBlendFactor = 1.0
@@ -136,7 +138,6 @@ extension MainScene: SKPhysicsContactDelegate {
         }
         
         if let (letter, fist) = checkCollision("letterNode", "fist") as? (SKShapeNode, SKShapeNode) {
-           print("contacted letter \(letter.userData)")
             if let char = letter.userData?["letter"] as? String {
                 typedText += char
             }
