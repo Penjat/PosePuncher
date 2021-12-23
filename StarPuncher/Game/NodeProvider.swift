@@ -2,6 +2,8 @@ import SpriteKit
 import Combine
 
 class NodeProvider: ObservableObject {
+    let changeWaveRate = 16
+    let changeColorRate = 128.0
     let fallTime: CGFloat = 7
     @Published var counter = 0
     let rate = Double.pi/16
@@ -10,20 +12,22 @@ class NodeProvider: ObservableObject {
     
     init() {
         $counter.sink { value in
-            if value%16 == 0 {
-                print("change wave")
+            if value%self.changeWaveRate == 0 {
                 self.wavForm = self.randomWav
             }
         }.store(in: &bag)
     }
     
     func addRandomStars(to scene: SKScene) {
-        fallingStar(at: wavScene(scene, index: Double(counter)*rate), scene: scene)
+        let point = wavScene(scene, index: Double(counter)*rate)
+        fallingStar(at: point, scene: scene)
+        
+        fallingStar(at: CGPoint(x: scene.frame.maxX - point.x, y: -50), scene: scene)
         counter += 1
     }
     
     func fallingStar(at point: CGPoint, scene: SKScene) {
-        let node = starNode
+        let node = starNode(Double(counter)*Double.pi/changeColorRate)
         node.position = point
         let moveAction = SKAction.moveTo(y: scene.frame.maxY + 50, duration: fallTime)
         let rotateAction =
@@ -45,10 +49,10 @@ class NodeProvider: ObservableObject {
     }
     
     var randomWav: (Double) -> Double {
-        [sin, triangleWave, sawWave, squareWave, noise].randomElement() ?? sin
+        [sin, triangleWave, sawWave, {(squareWave($0*7)+0.25)/2 }, noise].randomElement() ?? sin
     }
     
-    var starNode: SKNode {
+    func starNode(_ theta: Double) -> SKNode {
         let starSize: CGFloat = 25
         let node = SKNode()
         
@@ -60,9 +64,12 @@ class NodeProvider: ObservableObject {
         node.physicsBody!.categoryBitMask = 0x00000010
         node.physicsBody!.collisionBitMask = 0x00000101
         
-        let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: starSize, height: starSize))) )
-        shape.fillColor = .yellow
-        
+        let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: starSize, height: starSize))))
+        shape.name = "shape"
+        let color = UIColor(calcRGB(theta, redWav: { (sin($0)+1)/2 }, blueWav: { (sin($0+Double.pi*2/3*2)+1)/2 }, greenWav: { (sin($0+Double.pi*2/3)+1)/2 } ).3)
+        shape.fillColor = color
+        print(color)
+        shape.strokeColor = .clear
         node.addChild(shape)
         shape.position = CGPoint(x: -starSize/2, y: -starSize/2)
         

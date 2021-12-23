@@ -3,6 +3,7 @@ import Combine
 
 class MainScene: SKScene, ObservableObject {
     let starLoopKey = "STAR-LOOP-KEY"
+    let starSpeed = 8.0
     var score = 0
     let player: Player = RectPlayer()//PersonPlayer()
     var bag = Set<AnyCancellable>()
@@ -81,10 +82,10 @@ class MainScene: SKScene, ObservableObject {
                 shape.physicsBody?.affectedByGravity = false
                 shape.name = "ball"
                 shape.physicsBody!.contactTestBitMask = 1
-                let moveXAction = SKAction.moveTo(x: (self.scene?.size.width ?? 2)/2, duration: 10)
-                let moveYAction = SKAction.moveTo(y: (self.scene?.size.height ?? 2)/2, duration: 10)
+                let moveXAction = SKAction.moveTo(x: (self.scene?.size.width ?? 2)/2, duration: self.starSpeed)
+                let moveYAction = SKAction.moveTo(y: (self.scene?.size.height ?? 2)/2, duration: self.starSpeed)
                 let rotateAction =
-                SKAction.repeatForever(SKAction.rotate(byAngle: 3.1, duration: 2))
+                SKAction.repeatForever(SKAction.rotate(byAngle: Double.pi, duration: 2))
                 let action = SKAction.group([rotateAction, moveXAction, moveYAction])
                 shape.run(action)
                 self.addChild(shape)
@@ -100,9 +101,14 @@ extension MainScene: SKPhysicsContactDelegate {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
         print("collision \(nodeA.name) \(nodeB.name)")
-        if let (ball, fist) = checkCollision("ball", "fist") {
+        if let (ball, fist) = checkCollision("ball", "fist")  as? (SKNode, SKShapeNode) {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
             explosion?.position = ball.position
+            explosion?.particleColorSequence = nil
+            explosion?.particleColorBlendFactor = 1.0
+            if let shape = ball.childNode(withName: "shape") as? SKShapeNode {
+                explosion?.particleColor = shape.fillColor
+            }
             scene?.addChild(explosion!)
             ball.removeFromParent()
             self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
@@ -111,6 +117,12 @@ extension MainScene: SKPhysicsContactDelegate {
         
         if let (heart, ball) = checkCollision("heart", "ball") as? (SKShapeNode, SKNode) {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
+            explosion?.particleColorSequence = nil
+            explosion?.particleColorBlendFactor = 1.0
+            if let shape = ball.childNode(withName: "shape") as? SKShapeNode {
+                explosion?.particleColor = shape.fillColor
+            }
+            
             player.playerStats.health -= 1
             explosion?.position = ball.position
             scene?.addChild(explosion!)
