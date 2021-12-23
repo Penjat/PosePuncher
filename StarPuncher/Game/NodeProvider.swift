@@ -13,22 +13,9 @@ class NodeProvider: ObservableObject {
     init() {
         $counter.sink { value in
             if value%self.changeWaveRate == 0 {
-                print("changing wave")
-                self.generators = Bool.random() ? self.singleLine() : self.symetricalLines()
+                self.generators = SectonType.allCases.randomElement()?.generators ?? []
             }
         }.store(in: &bag)
-    }
-    
-    func singleLine() -> [NodeGenerator] {
-        let wav = randomWav
-        return [NodeGenerator(wav: {(wav($0)+1)/2 })]
-    }
-    
-    func symetricalLines() -> [NodeGenerator] {
-        let wav = [sin, triangleWave, sawWave].randomElement() ?? sin
-        return [
-            NodeGenerator(wav: {(wav($0)+1)/2 }),
-            NodeGenerator(wav: {1 - (wav($0)+1)/2 })]
     }
     
     func addRandomStars(to scene: SKScene) {
@@ -56,10 +43,6 @@ class NodeProvider: ObservableObject {
         return CGPoint(x: x*50, y:-50)
     }
     
-    var randomWav: (Double) -> Double {
-        [sin, triangleWave, sawWave, {(squareWave($0) + 0.5)/2}, noise].randomElement() ?? sin
-    }
-    
     func starNode(_ theta: Double) -> SKNode {
         let starSize: CGFloat = 25
         let node = SKNode()
@@ -76,7 +59,6 @@ class NodeProvider: ObservableObject {
         shape.name = "shape"
         let color = UIColor(calcRGB(theta, redWav: { (sin($0)+1)/2 }, blueWav: { (sin($0+Double.pi*2/3*2)+1)/2 }, greenWav: { (sin($0+Double.pi*2/3)+1)/2 } ).3)
         shape.fillColor = color
-        print(color)
         shape.strokeColor = .clear
         node.addChild(shape)
         shape.position = CGPoint(x: -starSize/2, y: -starSize/2)
