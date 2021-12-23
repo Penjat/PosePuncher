@@ -23,7 +23,7 @@ class NodeProvider: ObservableObject {
     }
     
     func fallingStar(at point: CGPoint, scene: SKScene) {
-        let node = starNode
+        let node = starNode(Double(counter)*Double.pi/64)
         node.position = point
         let moveAction = SKAction.moveTo(y: scene.frame.maxY + 50, duration: fallTime)
         let rotateAction =
@@ -48,7 +48,7 @@ class NodeProvider: ObservableObject {
         [sin, triangleWave, sawWave, squareWave, noise].randomElement() ?? sin
     }
     
-    var starNode: SKNode {
+    func starNode(_ theta: Double) -> SKNode {
         let starSize: CGFloat = 25
         let node = SKNode()
         
@@ -60,9 +60,12 @@ class NodeProvider: ObservableObject {
         node.physicsBody!.categoryBitMask = 0x00000010
         node.physicsBody!.collisionBitMask = 0x00000101
         
-        let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: starSize, height: starSize))) )
-        shape.fillColor = .yellow
-        
+        let shape = SKShapeNode(path: Star(corners: 5, smoothness: 0.5).path(in: CGRect(origin: CGPoint.zero, size: CGSize(width: starSize, height: starSize))))
+        shape.name = "shape"
+        let color = UIColor(calcRGB(theta, redWav: { (sin($0)+1)/2 }, blueWav: { (sin($0+Double.pi*2/3*2)+1)/2 }, greenWav: { (sin($0+Double.pi*2/3)+1)/2 } ).3)
+        shape.fillColor = color
+        print(color)
+        shape.strokeColor = .clear
         node.addChild(shape)
         shape.position = CGPoint(x: -starSize/2, y: -starSize/2)
         

@@ -100,9 +100,14 @@ extension MainScene: SKPhysicsContactDelegate {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
         print("collision \(nodeA.name) \(nodeB.name)")
-        if let (ball, fist) = checkCollision("ball", "fist") {
+        if let (ball, fist) = checkCollision("ball", "fist")  as? (SKNode, SKShapeNode) {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
             explosion?.position = ball.position
+            explosion?.particleColorSequence = nil
+            explosion?.particleColorBlendFactor = 1.0
+            if let shape = ball.childNode(withName: "shape") as? SKShapeNode {
+                explosion?.particleColor = shape.fillColor
+            }
             scene?.addChild(explosion!)
             ball.removeFromParent()
             self.run(SKAction.wait(forDuration: 2), completion: { explosion?.removeFromParent() })
@@ -111,6 +116,12 @@ extension MainScene: SKPhysicsContactDelegate {
         
         if let (heart, ball) = checkCollision("heart", "ball") as? (SKShapeNode, SKNode) {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
+            explosion?.particleColorSequence = nil
+            explosion?.particleColorBlendFactor = 1.0
+            if let shape = ball.childNode(withName: "shape") as? SKShapeNode {
+                explosion?.particleColor = shape.fillColor
+            }
+            
             player.playerStats.health -= 1
             explosion?.position = ball.position
             scene?.addChild(explosion!)
