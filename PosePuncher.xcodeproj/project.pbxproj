@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0B12E5082773D89D004B7379 /* StarPuncherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12E5072773D89D004B7379 /* StarPuncherTests.swift */; };
 		0B12E50F2774AA73004B7379 /* NodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12E50E2774AA73004B7379 /* NodeGenerator.swift */; };
+		0B12E5122774E61A004B7379 /* PlayerExplode.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B12E5102774E61A004B7379 /* PlayerExplode.sks */; };
+		0B12E5132774E61A004B7379 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B12E5112774E61A004B7379 /* Assets.xcassets */; };
 		0B208DCC274346C00090B3FE /* StarShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B208DCB274346C00090B3FE /* StarShape.swift */; };
 		0B295796274199E9009AEF47 /* RocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B295795274199E9009AEF47 /* RocketController.swift */; };
 		0B29DCA627484868008730B0 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCA527484868008730B0 /* MainScene.swift */; };
@@ -91,6 +93,8 @@
 		0B12E5052773D89D004B7379 /* StarPuncherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarPuncherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B12E5072773D89D004B7379 /* StarPuncherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarPuncherTests.swift; sourceTree = "<group>"; };
 		0B12E50E2774AA73004B7379 /* NodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeGenerator.swift; sourceTree = "<group>"; };
+		0B12E5102774E61A004B7379 /* PlayerExplode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayerExplode.sks; sourceTree = "<group>"; };
+		0B12E5112774E61A004B7379 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B208DCB274346C00090B3FE /* StarShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarShape.swift; sourceTree = "<group>"; };
 		0B208DCD27435B1A0090B3FE /* SpaceBackground.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpaceBackground.sks; sourceTree = "<group>"; };
 		0B295795274199E9009AEF47 /* RocketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketController.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 				0B2BDD172732127900E61B71 /* Explosion.sks */,
 				0B2957972741A90E009AEF47 /* RocketTrail.sks */,
 				0B208DCD27435B1A0090B3FE /* SpaceBackground.sks */,
+				0B12E5102774E61A004B7379 /* PlayerExplode.sks */,
+				0B12E5112774E61A004B7379 /* Assets.xcassets */,
 			);
 			path = Effects;
 			sourceTree = "<group>";
@@ -492,9 +498,11 @@
 			files = (
 				0B7524AE2745E182009604FD /* Preview Assets.xcassets in Resources */,
 				0B7524AB2745E182009604FD /* Assets.xcassets in Resources */,
+				0B12E5122774E61A004B7379 /* PlayerExplode.sks in Resources */,
 				0B29DCA9274872F1008730B0 /* FireParticles.sks in Resources */,
 				0B29DCA8274872F1008730B0 /* SpaceBackground.sks in Resources */,
 				0B29DCAA274872F1008730B0 /* RocketTrail.sks in Resources */,
+				0B12E5132774E61A004B7379 /* Assets.xcassets in Resources */,
 				0B29DCA7274872F1008730B0 /* Explosion.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -49,6 +49,8 @@ class RectPlayer: Player {
                 node.isHidden = !value.isValid
             }
         })
+        
+        playerParts[.nose]?.isHidden = playerStats.health <= 0
     }
     
     var playerHeart: SKShapeNode = {

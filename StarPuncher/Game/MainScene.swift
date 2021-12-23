@@ -36,15 +36,14 @@ class MainScene: SKScene, ObservableObject {
     func startGame() {
         run(starfallLoop, withKey: starLoopKey)
         
-//        player.playerStats.$health.sink { health in
-//            if health <= 0 {
-//                self.gameOver()
-//            }
-//        }.store(in: &bag)
+        player.playerStats.$health.sink { health in
+            if health <= 0 {
+                self.gameOver()
+            }
+        }.store(in: &bag)
     }
     
     func gameOver() {
-        self.scene?.isPaused = true
         self.removeAction(forKey: self.starLoopKey)
     }
     
@@ -115,7 +114,7 @@ extension MainScene: SKPhysicsContactDelegate {
             score += 1
         }
         
-        if let (heart, ball) = checkCollision("heart", "ball") as? (SKShapeNode, SKNode) {
+        if let (heart, ball) = checkCollision("heart", "ball") {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
             explosion?.particleColorSequence = nil
             explosion?.particleColorBlendFactor = 1.0
@@ -124,6 +123,12 @@ extension MainScene: SKPhysicsContactDelegate {
             }
             
             player.playerStats.health -= 1
+            
+            if player.playerStats.health <= 0, let scene = scene {
+                let playerExplosion = SKEmitterNode(fileNamed: "PlayerExplode")
+                playerExplosion?.position = CGPoint(x: scene.frame.midX + heart.position.x, y: scene.frame.midY + heart.position.y)
+                scene.addChild(playerExplosion!)
+            }
             explosion?.position = ball.position
             scene?.addChild(explosion!)
             ball.removeFromParent()

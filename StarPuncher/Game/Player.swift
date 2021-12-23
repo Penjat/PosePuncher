@@ -4,8 +4,7 @@ protocol Player {
     func drawPlayer(pose: Pose, scene: SKScene)
     func setUp(scene: SKScene)
     var playerSize: CGSize { get }
-    var playerStats: PlayerStats { get }
-    
+    var playerStats: PlayerStats { get }    
 }
 
 struct JointSegment: Hashable {
