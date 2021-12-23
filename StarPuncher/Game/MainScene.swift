@@ -30,7 +30,8 @@ class MainScene: SKScene, ObservableObject {
         scene?.addChild(label)
         label.zRotation = CGFloat.pi
         label.position = CGPoint(x: (scene?.size.width ?? 0)/2, y: 200.0)
-        startGame()
+        
+        scene?.addChild(newgameButton)
     }
     
     func startGame() {
@@ -49,6 +50,24 @@ class MainScene: SKScene, ObservableObject {
         scene?.addChild(gameoverLabel)
         
         self.addChild(retryButton)
+    }
+    
+    var newgameButton: SKNode {
+        let button = SKLabelNode(text: "NEW GAME")
+        button.fontName = "ArcadeClassic"
+        button.fontSize = 30
+        button.zRotation = Double.pi
+        
+        button.position = CGPoint(x: scene?.frame.midX ?? 0, y: (scene?.frame.midY ?? 0) - 120)
+        button.name = "NEW-GAME"
+        button.physicsBody = SKPhysicsBody(rectangleOf: button.frame.size)
+        button.physicsBody!.contactTestBitMask = 0x00000101
+        button.physicsBody!.categoryBitMask = 0x00000010
+        button.physicsBody!.collisionBitMask = 0x00000101
+        button.physicsBody?.affectedByGravity = false
+        button.physicsBody?.isDynamic = true
+        
+        return button
     }
     
     var gameoverLabel: SKNode {
@@ -77,7 +96,7 @@ class MainScene: SKScene, ObservableObject {
         button.fontSize = 30
         button.zRotation = Double.pi
         
-        button.position = CGPoint(x: scene?.frame.midX ?? 0, y: -200)
+        button.position = CGPoint(x: scene?.frame.midX ?? 0, y: -120)
         let moveAction = SKAction.moveTo(y: (scene?.frame.midY ?? 0) - 50, duration: starSpeed*2)
         button.run(moveAction)
         
@@ -188,6 +207,11 @@ extension MainScene: SKPhysicsContactDelegate {
             if let char = letter.userData?["letter"] as? String {
                 typedText += char
             }
+        }
+        
+        if let (button, _) = checkCollision("NEW-GAME", "fist") {
+            button.removeFromParent()
+            startGame()
         }
         
         if let (button, _) = checkCollision("RETRY-BUTTON", "fist") {
