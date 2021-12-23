@@ -2,6 +2,8 @@ import SpriteKit
 import Combine
 
 class NodeProvider: ObservableObject {
+    let changeWaveRate = 16
+    let changeColorRate = 128.0
     let fallTime: CGFloat = 7
     @Published var counter = 0
     let rate = Double.pi/16
@@ -10,20 +12,22 @@ class NodeProvider: ObservableObject {
     
     init() {
         $counter.sink { value in
-            if value%16 == 0 {
-                print("change wave")
+            if value%self.changeWaveRate == 0 {
                 self.wavForm = self.randomWav
             }
         }.store(in: &bag)
     }
     
     func addRandomStars(to scene: SKScene) {
-        fallingStar(at: wavScene(scene, index: Double(counter)*rate), scene: scene)
+        let point = wavScene(scene, index: Double(counter)*rate)
+        fallingStar(at: point, scene: scene)
+        
+        fallingStar(at: CGPoint(x: scene.frame.maxX - point.x, y: -50), scene: scene)
         counter += 1
     }
     
     func fallingStar(at point: CGPoint, scene: SKScene) {
-        let node = starNode(Double(counter)*Double.pi/64)
+        let node = starNode(Double(counter)*Double.pi/changeColorRate)
         node.position = point
         let moveAction = SKAction.moveTo(y: scene.frame.maxY + 50, duration: fallTime)
         let rotateAction =
@@ -45,7 +49,7 @@ class NodeProvider: ObservableObject {
     }
     
     var randomWav: (Double) -> Double {
-        [sin, triangleWave, sawWave, squareWave, noise].randomElement() ?? sin
+        [sin, triangleWave, sawWave, {(squareWave($0*7)+0.25)/2 }, noise].randomElement() ?? sin
     }
     
     func starNode(_ theta: Double) -> SKNode {
