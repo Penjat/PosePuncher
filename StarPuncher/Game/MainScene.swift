@@ -45,7 +45,31 @@ class MainScene: SKScene, ObservableObject {
     
     func gameOver() {
         self.removeAction(forKey: self.starLoopKey)
+        
+        scene?.addChild(gameoverLabel)
     }
+    
+    var gameoverLabel: SKNode {
+        let button = SKLabelNode(text: "GAME OVER")
+        button.fontName = "ArcadeClassic"
+        button.fontSize = 30
+        button.zRotation = Double.pi
+        
+        button.position = CGPoint(x: scene?.frame.midX ?? 0, y: -50)
+        let moveAction = SKAction.moveTo(y: (scene?.frame.maxY ?? 0), duration: starSpeed*2)
+        button.run(moveAction)
+        
+        button.physicsBody = SKPhysicsBody(rectangleOf: button.frame.size)
+        button.physicsBody!.contactTestBitMask = 0x00000101
+        button.physicsBody!.categoryBitMask = 0x00000010
+        button.physicsBody!.collisionBitMask = 0x00000101
+        button.physicsBody?.affectedByGravity = false
+        button.physicsBody?.isDynamic = true
+        
+        return button
+    }
+    
+    
     
     func enterHighScore() {
         //        scene?.addChild(textTyper.node)

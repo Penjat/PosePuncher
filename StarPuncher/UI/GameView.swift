@@ -10,7 +10,6 @@ struct GameView: View {
                 .ignoresSafeArea()
             VStack {
                 HStack {
-                    Text("\(viewModel.stageModel.gameStage.rawValue)").foregroundColor(.pink)
                     Spacer()
                     Text("\(viewModel.scene.score)").foregroundColor(.yellow)
                     Spacer()
