@@ -17,7 +17,6 @@ class GameViewModel: ObservableObject {
         } catch {
             fatalError("Failed to load model. \(error.localizedDescription)")
         }
-        print("Init")
         scene = MainScene()
         poseNet.delegate = self
     }

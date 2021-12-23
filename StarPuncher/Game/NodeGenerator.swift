@@ -7,6 +7,7 @@ struct NodeGenerator {
 enum SectonType: CaseIterable {
     case single
     case symetrical
+    case doubleSymetrical
     
     var generators: [NodeGenerator] {
         switch self {
@@ -18,6 +19,11 @@ enum SectonType: CaseIterable {
             return [
                 NodeGenerator(wav: {(wav($0)+1)/2 }),
                 NodeGenerator(wav: {1 - (wav($0)+1)/2 })]
+        case .doubleSymetrical:
+            let wav = [sin, triangleWave, squareWave].randomElement() ?? sin
+            return [
+                NodeGenerator(wav: {(wav($0)+1.5)/4 }),
+                NodeGenerator(wav: {1 - (wav($0)+1)/4 })]
         }
     }
     
