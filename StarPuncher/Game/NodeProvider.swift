@@ -2,27 +2,26 @@ import SpriteKit
 import Combine
 
 class NodeProvider: ObservableObject {
+    lazy var generators = [NodeGenerator]()
     let changeWaveRate = 16
     let changeColorRate = 128.0
     let fallTime: CGFloat = 7
     @Published var counter = 0
     let rate = Double.pi/16
-    var wavForm = triangleWave
     var bag = Set<AnyCancellable>()
     
     init() {
         $counter.sink { value in
             if value%self.changeWaveRate == 0 {
-                self.wavForm = self.randomWav
+                self.generators = SectonType.allCases.randomElement()?.generators ?? []
             }
         }.store(in: &bag)
     }
     
     func addRandomStars(to scene: SKScene) {
-        let point = wavScene(scene, index: Double(counter)*rate)
-        fallingStar(at: point, scene: scene)
-        
-        fallingStar(at: CGPoint(x: scene.frame.maxX - point.x, y: -50), scene: scene)
+        generators.forEach { generator in
+            fallingStar(at: CGPoint(x: generator.wav(Double(counter)*rate)*(scene.frame.maxX - 50)+25.0, y: -50.0), scene: scene)
+        }
         counter += 1
     }
     
@@ -38,18 +37,10 @@ class NodeProvider: ObservableObject {
         scene.addChild(node)
     }
     
-    func wavScene(_ scene: SKScene, index: Double) -> CGPoint {
-        let x = wavForm(index)
-        return CGPoint(x: x*(scene.frame.maxX - 50) + 25, y:-50)
-    }
     
     func randomTopPos(_ scene: SKScene) -> CGPoint {
         let x = CGFloat.random(in: 1..<((scene.frame.maxX - 50)/50))
         return CGPoint(x: x*50, y:-50)
-    }
-    
-    var randomWav: (Double) -> Double {
-        [sin, triangleWave, sawWave, {(squareWave($0*7)+0.25)/2 }, noise].randomElement() ?? sin
     }
     
     func starNode(_ theta: Double) -> SKNode {
@@ -68,7 +59,6 @@ class NodeProvider: ObservableObject {
         shape.name = "shape"
         let color = UIColor(calcRGB(theta, redWav: { (sin($0)+1)/2 }, blueWav: { (sin($0+Double.pi*2/3*2)+1)/2 }, greenWav: { (sin($0+Double.pi*2/3)+1)/2 } ).3)
         shape.fillColor = color
-        print(color)
         shape.strokeColor = .clear
         node.addChild(shape)
         shape.position = CGPoint(x: -starSize/2, y: -starSize/2)

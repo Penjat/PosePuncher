@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B12E5082773D89D004B7379 /* StarPuncherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12E5072773D89D004B7379 /* StarPuncherTests.swift */; };
+		0B12E50F2774AA73004B7379 /* NodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B12E50E2774AA73004B7379 /* NodeGenerator.swift */; };
 		0B208DCC274346C00090B3FE /* StarShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B208DCB274346C00090B3FE /* StarShape.swift */; };
 		0B295796274199E9009AEF47 /* RocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B295795274199E9009AEF47 /* RocketController.swift */; };
 		0B29DCA627484868008730B0 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29DCA527484868008730B0 /* MainScene.swift */; };
@@ -89,6 +90,7 @@
 /* Begin PBXFileReference section */
 		0B12E5052773D89D004B7379 /* StarPuncherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarPuncherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B12E5072773D89D004B7379 /* StarPuncherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarPuncherTests.swift; sourceTree = "<group>"; };
+		0B12E50E2774AA73004B7379 /* NodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeGenerator.swift; sourceTree = "<group>"; };
 		0B208DCB274346C00090B3FE /* StarShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarShape.swift; sourceTree = "<group>"; };
 		0B208DCD27435B1A0090B3FE /* SpaceBackground.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpaceBackground.sks; sourceTree = "<group>"; };
 		0B295795274199E9009AEF47 /* RocketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			children = (
 				0B29DCA527484868008730B0 /* MainScene.swift */,
 				0B812943275FD16200F9001F /* NodeProvider.swift */,
+				0B12E50E2774AA73004B7379 /* NodeGenerator.swift */,
 				0B2C7B80274C64E200D8706F /* Player.swift */,
 				0B2C7B83274C804500D8706F /* RectPlayer.swift */,
 				0B812941275EB2D500F9001F /* TextInputPresenter.swift */,
@@ -526,6 +529,7 @@
 				0B812942275EB2D500F9001F /* TextInputPresenter.swift in Sources */,
 				0B2C7B84274C804500D8706F /* RectPlayer.swift in Sources */,
 				0B7524BB2745E196009604FD /* Pose.swift in Sources */,
+				0B12E50F2774AA73004B7379 /* NodeGenerator.swift in Sources */,
 				0B29DCC3274AF268008730B0 /* TitleView.swift in Sources */,
 				0B29DCB027495389008730B0 /* PreviewView.swift in Sources */,
 				0B7524A92745E180009604FD /* ContentView.swift in Sources */,
@@ -655,6 +659,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StarPuncher/Preview Content\"";
@@ -688,6 +693,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StarPuncher/Preview Content\"";
