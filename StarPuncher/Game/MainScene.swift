@@ -214,15 +214,27 @@ extension MainScene: SKPhysicsContactDelegate {
             }
         }
         
-        if let (button, _) = checkCollision("NEW-GAME", "fist") {
+        if let (button, fist) = checkCollision("NEW-GAME", "fist") {
             button.run(fadeOutText)
             button.physicsBody = nil
+            let explosion = SKEmitterNode(fileNamed: "Explosion")
+            explosion?.particleColorSequence = nil
+            explosion?.particleColorBlendFactor = 1.0
+            explosion?.particleColor = .white
+            explosion?.position = CGPoint(x: scene!.frame.midX + fist.position.x, y: scene!.frame.midY + fist.position.y)
+            scene?.addChild(explosion!)
             startGame()
         }
         
-        if let (button, _) = checkCollision("RETRY-BUTTON", "fist") {
+        if let (button, fist) = checkCollision("RETRY-BUTTON", "fist") {
             button.run(fadeOutText)
             button.physicsBody = nil
+            let explosion = SKEmitterNode(fileNamed: "Explosion")
+            explosion?.particleColorSequence = nil
+            explosion?.particleColorBlendFactor = 1.0
+            explosion?.particleColor = .white
+            explosion?.position = CGPoint(x: scene!.frame.midX + fist.position.x, y: scene!.frame.midY + fist.position.y)
+            scene?.addChild(explosion!)
             startGame()
         }
         func checkCollision(_ nameA: String, _ nameB: String) -> (SKNode, SKNode)? {
