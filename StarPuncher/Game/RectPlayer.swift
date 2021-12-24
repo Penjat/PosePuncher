@@ -11,7 +11,38 @@ class RectPlayer: Player {
     
     lazy var playerParts: [Joint.Name: SKShapeNode] = [.leftWrist: fist,
                                                        .rightWrist: fist,
-                                                       .nose: playerHeart]
+                                                       .nose: playerHeart,
+                                                       .leftElbow: smallJoint,
+                                                       .rightElbow: smallJoint,
+                                                       .leftShoulder: smallJoint,
+                                                       .rightShoulder: smallJoint]
+    
+    lazy var jointSegments = [
+        // The connected joints that are on the left side of the body.
+//        JointSegment(jointA: .leftHip, jointB: .leftShoulder): bodyLine,
+        JointSegment(jointA: .leftShoulder, jointB: .leftElbow): bodyLine,
+        JointSegment(jointA: .leftElbow, jointB: .leftWrist): bodyLine,
+        //        JointSegment(jointA: .leftHip, jointB: .leftKnee),
+        //        JointSegment(jointA: .leftKnee, jointB: .leftAnkle),
+        //        // The connected joints that are on the right side of the body.
+//        JointSegment(jointA: .rightHip, jointB: .rightShoulder): bodyLine,
+        JointSegment(jointA: .rightShoulder, jointB: .rightElbow): bodyLine,
+        JointSegment(jointA: .rightElbow, jointB: .rightWrist): bodyLine,
+        //        JointSegment(jointA: .rightHip, jointB: .rightKnee),
+        //        JointSegment(jointA: .rightKnee, jointB: .rightAnkle),
+        // The connected joints that cross over the body.
+        JointSegment(jointA: .leftShoulder, jointB: .rightShoulder): bodyLine,
+//        JointSegment(jointA: .leftHip, jointB: .rightHip): bodyLine
+    ]
+    
+    var bodyLine: SKShapeNode {
+        let line = SKShapeNode()
+        
+        line.strokeColor = SKColor(displayP3Red: 1.0, green: 1.0, blue: 1.0, alpha: 0.4)
+        
+        line.lineWidth = 4
+        return line
+    }
     
     func flashHeart() {
         let repeatTime: CGFloat = 0.1
@@ -25,6 +56,14 @@ class RectPlayer: Player {
         
         
         playerHeart.run(repeatAction)
+    }
+    
+    var smallJoint: SKShapeNode {
+        let jointSize = 8.0
+        let node = SKShapeNode(circleOfRadius: jointSize)
+        node.lineWidth = 0
+        node.fillColor = .white
+        return node
     }
     
     var fist: SKShapeNode {
@@ -50,6 +89,22 @@ class RectPlayer: Player {
             }
         })
         
+        jointSegments.forEach { (key: JointSegment, lineNode: SKShapeNode) in
+            guard
+                pose.joints[key.jointA]?.isValid ?? false,
+                pose.joints[key.jointB]?.isValid ?? false,
+                let jointA = playerParts[key.jointA],
+                let jointB = playerParts[key.jointB] else {
+                    lineNode.isHidden = true
+                    return
+            }
+            lineNode.isHidden = false
+            let path = CGMutablePath()
+            path.move(to: jointA.position )
+            path.addLine(to: jointB.position)
+            lineNode.path = path
+        }
+        
         playerParts[.nose]?.isHidden = playerStats.health <= 0
     }
     
@@ -71,9 +126,9 @@ class RectPlayer: Player {
         playerBody = SKShapeNode(rectOf: playerSize)
         playerBody?.position = CGPoint(x: scene.size.width/2, y: scene.size.height/2)
         scene.addChild(playerBody!)
-//        playerBody?.addChild(playerHeart)
         
         playerParts.values.forEach { playerBody?.addChild($0)}
+        jointSegments.values.forEach { playerBody?.addChild($0)}
         
         playerStats.$health.receive(on: RunLoop.main).scan(playerStats.health) { $0 - $1 }.sink { changeInHealth in
             if changeInHealth < 0 {
@@ -81,4 +136,6 @@ class RectPlayer: Player {
             }
         }.store(in: &bag)
     }
+    
+    
 }
