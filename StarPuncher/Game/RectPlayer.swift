@@ -53,8 +53,6 @@ class RectPlayer: Player {
             SKAction.run { self.playerHeart.fillColor = .white},
             SKAction.wait(forDuration: repeatTime)])
         let repeatAction = SKAction.repeat(flash, count: repeats)
-        
-        
         playerHeart.run(repeatAction)
     }
     
@@ -62,7 +60,7 @@ class RectPlayer: Player {
         let jointSize = 8.0
         let node = SKShapeNode(circleOfRadius: jointSize)
         node.lineWidth = 0
-        node.fillColor = .white
+        node.fillColor = SKColor(displayP3Red: 1.0, green: 1.0, blue: 1.0, alpha: 0.4)
         return node
     }
     
