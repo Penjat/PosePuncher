@@ -30,22 +30,85 @@ class MainScene: SKScene, ObservableObject {
         scene?.addChild(label)
         label.zRotation = CGFloat.pi
         label.position = CGPoint(x: (scene?.size.width ?? 0)/2, y: 200.0)
-        startGame()
+        
+        scene?.addChild(newgameButton)
     }
     
     func startGame() {
         run(starfallLoop, withKey: starLoopKey)
-        
-//        player.playerStats.$health.sink { health in
-//            if health <= 0 {
-//                self.gameOver()
-//            }
-//        }.store(in: &bag)
+        player.playerStats.health = 3
+        player.playerStats.$health.sink { health in
+            if health <= 0 {
+                self.gameOver()
+            }
+        }.store(in: &bag)
     }
     
     func gameOver() {
-        self.scene?.isPaused = true
         self.removeAction(forKey: self.starLoopKey)
+        bag.removeAll()
+        scene?.addChild(gameoverLabel)
+        
+        self.addChild(retryButton)
+    }
+    
+    var newgameButton: SKNode {
+        let button = SKLabelNode(text: "NEW GAME")
+        button.fontName = "ArcadeClassic"
+        button.fontSize = 30
+        button.zRotation = Double.pi
+        
+        button.position = CGPoint(x: scene?.frame.midX ?? 0, y: (scene?.frame.midY ?? 0) - 120)
+        button.name = "NEW-GAME"
+        button.physicsBody = SKPhysicsBody(rectangleOf: button.frame.size)
+        button.physicsBody!.contactTestBitMask = 0x00000101
+        button.physicsBody!.categoryBitMask = 0x00000010
+        button.physicsBody!.collisionBitMask = 0x00000101
+        button.physicsBody?.affectedByGravity = false
+        button.physicsBody?.isDynamic = true
+        
+        return button
+    }
+    
+    var gameoverLabel: SKNode {
+        let button = SKLabelNode(text: "GAME OVER")
+        button.fontName = "ArcadeClassic"
+        button.fontSize = 30
+        button.zRotation = Double.pi
+        
+        button.position = CGPoint(x: scene?.frame.midX ?? 0, y: -50)
+        let moveAction = SKAction.moveTo(y: (scene?.frame.maxY ?? 0), duration: starSpeed*2)
+        button.run(moveAction)
+        
+        button.physicsBody = SKPhysicsBody(rectangleOf: button.frame.size)
+        button.physicsBody!.contactTestBitMask = 0x00000101
+        button.physicsBody!.categoryBitMask = 0x00000010
+        button.physicsBody!.collisionBitMask = 0x00000101
+        button.physicsBody?.affectedByGravity = false
+        button.physicsBody?.isDynamic = true
+        
+        return button
+    }
+    
+    var retryButton: SKNode {
+        let button = SKLabelNode(text: "retry?")
+        button.fontName = "ArcadeClassic"
+        button.fontSize = 30
+        button.zRotation = Double.pi
+        
+        button.position = CGPoint(x: scene?.frame.midX ?? 0, y: -120)
+        let moveAction = SKAction.moveTo(y: (scene?.frame.midY ?? 0) - 50, duration: starSpeed*2)
+        button.run(moveAction)
+        
+        button.name = "RETRY-BUTTON"
+        button.physicsBody = SKPhysicsBody(rectangleOf: button.frame.size)
+        button.physicsBody!.contactTestBitMask = 0x00000101
+        button.physicsBody!.categoryBitMask = 0x00000010
+        button.physicsBody!.collisionBitMask = 0x00000101
+        button.physicsBody?.affectedByGravity = false
+        button.physicsBody?.isDynamic = true
+        
+        return button
     }
     
     func enterHighScore() {
@@ -55,6 +118,13 @@ class MainScene: SKScene, ObservableObject {
         //        $typedText.sink { newText in
         //            self.label.text = newText
         //        }.store(in: &bag)
+    }
+    
+    var fadeOutText: SKAction {
+        let grow = SKAction.scale(to: 4, duration: 1.0)
+        let fade = SKAction.fadeOut(withDuration: 1.0)
+        let group = SKAction.group([grow, fade])
+        return SKAction.sequence([group, SKAction.removeFromParent()])
     }
     
     var starfallLoop: SKAction {
@@ -100,7 +170,6 @@ extension MainScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
-//        print("collision \(nodeA.name) \(nodeB.name)")
         if let (ball, fist) = checkCollision("ball", "fist")  as? (SKNode, SKShapeNode) {
             let explosion = SKEmitterNode(fileNamed: "Explosion")
             explosion?.position = ball.position
@@ -115,7 +184,10 @@ extension MainScene: SKPhysicsContactDelegate {
             score += 1
         }
         
-        if let (heart, ball) = checkCollision("heart", "ball") as? (SKShapeNode, SKNode) {
+        if let (heart, ball) = checkCollision("heart", "ball") {
+            guard player.playerStats.health > 0 else {
+                return
+            }
             let explosion = SKEmitterNode(fileNamed: "Explosion")
             explosion?.particleColorSequence = nil
             explosion?.particleColorBlendFactor = 1.0
@@ -124,6 +196,12 @@ extension MainScene: SKPhysicsContactDelegate {
             }
             
             player.playerStats.health -= 1
+            
+            if player.playerStats.health <= 0, let scene = scene {
+                let playerExplosion = SKEmitterNode(fileNamed: "PlayerExplode")
+                playerExplosion?.position = CGPoint(x: scene.frame.midX + heart.position.x, y: scene.frame.midY + heart.position.y)
+                scene.addChild(playerExplosion!)
+            }
             explosion?.position = ball.position
             scene?.addChild(explosion!)
             ball.removeFromParent()
@@ -131,12 +209,34 @@ extension MainScene: SKPhysicsContactDelegate {
         }
         
         if let (letter, fist) = checkCollision("letterNode", "fist") as? (SKShapeNode, SKShapeNode) {
-           print("contacted letter \(letter.userData)")
             if let char = letter.userData?["letter"] as? String {
                 typedText += char
             }
         }
         
+        if let (button, fist) = checkCollision("NEW-GAME", "fist") {
+            button.run(fadeOutText)
+            button.physicsBody = nil
+            let explosion = SKEmitterNode(fileNamed: "Explosion")
+            explosion?.particleColorSequence = nil
+            explosion?.particleColorBlendFactor = 1.0
+            explosion?.particleColor = .white
+            explosion?.position = CGPoint(x: scene!.frame.midX + fist.position.x, y: scene!.frame.midY + fist.position.y)
+            scene?.addChild(explosion!)
+            startGame()
+        }
+        
+        if let (button, fist) = checkCollision("RETRY-BUTTON", "fist") {
+            button.run(fadeOutText)
+            button.physicsBody = nil
+            let explosion = SKEmitterNode(fileNamed: "Explosion")
+            explosion?.particleColorSequence = nil
+            explosion?.particleColorBlendFactor = 1.0
+            explosion?.particleColor = .white
+            explosion?.position = CGPoint(x: scene!.frame.midX + fist.position.x, y: scene!.frame.midY + fist.position.y)
+            scene?.addChild(explosion!)
+            startGame()
+        }
         func checkCollision(_ nameA: String, _ nameB: String) -> (SKNode, SKNode)? {
             switch (nodeA.name, nodeB.name){
             case (nameA, nameB):
