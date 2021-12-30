@@ -16,7 +16,7 @@ class PlayerView: NSView {
         previewLayer?.frame = self.frame
         previewLayer?.contentsGravity = .resizeAspectFill
         previewLayer?.videoGravity = .resizeAspectFill
-        previewLayer?.connection?.automaticallyAdjustsVideoMirroring = true
+        previewLayer?.connection?.automaticallyAdjustsVideoMirroring = false
         previewLayer?.connection?.isVideoMirrored = true
         layer = previewLayer
     }

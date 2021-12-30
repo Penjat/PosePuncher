@@ -76,6 +76,11 @@
 		0B9EE18B2730CFA700F14DAE /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9EE18A2730CFA700F14DAE /* CharacterView.swift */; };
 		0B9EE18D2730DC8600F14DAE /* GameplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9EE18C2730DC8600F14DAE /* GameplayScene.swift */; };
 		0B9EE1912731D49100F14DAE /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9EE1902731D49100F14DAE /* PlayerController.swift */; };
+		0BE609DB277E569E002F1813 /* SpaceBackground.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B208DCD27435B1A0090B3FE /* SpaceBackground.sks */; };
+		0BE609DC277E569E002F1813 /* RocketTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B2957972741A90E009AEF47 /* RocketTrail.sks */; };
+		0BE609DD277E569E002F1813 /* PlayerExplode.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B12E5102774E61A004B7379 /* PlayerExplode.sks */; };
+		0BE609DE277E569E002F1813 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BDD172732127900E61B71 /* Explosion.sks */; };
+		0BE609DF277E569E002F1813 /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0B9EE18E2730E3D000F14DAE /* FireParticles.sks */; };
 		0BFDB55F2755ADBD00ABA339 /* DeviceWithExternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFDB55E2755ADBD00ABA339 /* DeviceWithExternalView.swift */; };
 		0BFDB5612755AE2900ABA339 /* SingleDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFDB5602755AE2900ABA339 /* SingleDeviceView.swift */; };
 /* End PBXBuildFile section */
@@ -517,8 +522,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BE609DD277E569E002F1813 /* PlayerExplode.sks in Resources */,
 				0B875CAC272DB988002C6887 /* Preview Assets.xcassets in Resources */,
 				0B875CA9272DB988002C6887 /* Assets.xcassets in Resources */,
+				0BE609DC277E569E002F1813 /* RocketTrail.sks in Resources */,
+				0BE609DB277E569E002F1813 /* SpaceBackground.sks in Resources */,
+				0BE609DE277E569E002F1813 /* Explosion.sks in Resources */,
+				0BE609DF277E569E002F1813 /* FireParticles.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
