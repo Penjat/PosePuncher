@@ -29,15 +29,15 @@ struct ContentView: View {
                 scene.poseViewModel.pose.sink { pose in
                     let headHeight = pose.joints[.nose]?.position.y ?? 500
                     if pose.joints[.rightWrist]?.position.y ?? 0 < headHeight {
-                        keyTracker.keyOn(ButtonEvent(keyNUmber: 125))
-                    } else {
-                        keyTracker.keyOff(ButtonEvent(keyNUmber: 125))
-                    }
-                    
-                    if pose.joints[.leftWrist]?.position.y ?? 0 < headHeight {
                         keyTracker.keyOn(ButtonEvent(keyNUmber: 126))
                     } else {
                         keyTracker.keyOff(ButtonEvent(keyNUmber: 126))
+                    }
+                    
+                    if pose.joints[.rightWrist]?.position.y ?? 0 > headHeight + 250 {
+                        keyTracker.keyOn(ButtonEvent(keyNUmber: 125))
+                    } else {
+                        keyTracker.keyOff(ButtonEvent(keyNUmber: 125))
                     }
                 }.store(in: &bag)
                 
