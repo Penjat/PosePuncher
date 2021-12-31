@@ -28,14 +28,13 @@ struct ContentView: View {
         ZStack {
             SpriteView(scene: scene)
                 .rotationEffect(Angle(degrees: 180))
-//                .frame(width: 1280, height: 720)
-                .ignoresSafeArea()
-//            PlayerView(captureSession: scene.videoViewModel.captureSession)
+
             PlayerContainerView(captureSession: scene.videoViewModel.captureSession).onAppear {
                 scene.videoViewModel.checkAuthorization()
-                scene.videoViewModel.setupOutput(delgate: scene.poseViewModel)
+//                scene.videoViewModel.setupOutput(delgate: scene.poseViewModel)
+                
             }.opacity(0.4)
-        }
+        }.frame(width: 1280, height: 720).ignoresSafeArea()
     }
 }
 

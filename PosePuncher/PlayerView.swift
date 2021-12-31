@@ -9,7 +9,10 @@ class PlayerView: NSView {
     init(captureSession: AVCaptureSession) {
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         super.init(frame: .zero)
-        setupLayer()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.setupLayer()
+        }
     }
 
     func setupLayer() {
