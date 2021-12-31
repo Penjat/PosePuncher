@@ -49,10 +49,10 @@ class RocketController {
         head?.physicsBody!.contactTestBitMask = 1
         playerBody.addChild(head!)
         
-        let trail = SKEmitterNode(fileNamed: "RocketTrail")!
-        head?.addChild(trail)
-        trail.position = CGPoint(x: 0, y: 50)
-        trail.targetNode = particleTarget
+//        let trail = SKEmitterNode(fileNamed: "RocketTrail")!
+//        head?.addChild(trail)
+//        trail.position = CGPoint(x: 0, y: 50)
+//        trail.targetNode = particleTarget
         
     }
     
