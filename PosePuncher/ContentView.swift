@@ -3,17 +3,9 @@ import SpriteKit
 import Combine
 
 struct ContentView: View {
-    @State var cancellable: AnyCancellable?
+    @State var bag = Set<AnyCancellable>()
     @State var flag = false
     let rightArrowKeyCode: UInt16 = 125
-    //    var scene: SKScene = {
-    //        let scene = GameScene()
-    //        scene.size = CGSize(width: 1280, height: 720)
-    ////        scene.scaleMode = .fill
-    //        scene.scaleMode = .aspectFit
-    //        scene.setUp()
-    //        return scene
-    //    }()
     
     var scene: GameScene = {
         let scene = GameScene()
@@ -32,6 +24,15 @@ struct ContentView: View {
             PlayerContainerView(captureSession: scene.videoViewModel.captureSession).onAppear {
                 scene.videoViewModel.checkAuthorization()
 //                scene.videoViewModel.setupOutput(delgate: scene.poseViewModel)
+                scene.poseViewModel.pose.sink { pose in
+                    let headHeight = pose.joints[.nose]?.position.y ?? 500
+                    if pose.joints[.rightWrist]?.position.y ?? 0 < headHeight {
+                        print("press a")
+                    }
+                    if pose.joints[.leftWrist]?.position.y ?? 0 < headHeight {
+                        print("press b")
+                    }
+                }.store(in: &bag)
                 
             }.opacity(0.4)
         }.frame(width: 1280, height: 720).ignoresSafeArea()
